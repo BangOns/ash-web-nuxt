@@ -1,0 +1,2 @@
+pathprefix = untuk memanggil component by nama folder root contoh component button yang ada di shared atau di ui, maka untuk memanggilnya <SharedComponentButton/>
+prefix  =  untuk memanggul component by nama yang ditentukan secara manual, contoh prefix:'Program', dan jika ia ingin memanggil Button
