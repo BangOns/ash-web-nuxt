@@ -43,6 +43,10 @@
   "optionalDependencies": {
     "@rolldown/binding-win32-x64-msvc": "^1.1.1"
   },
+  "overrides": {
+    "esbuild": "^0.28.1",
+    "@hono/node-server": "^1.19.13"
+  },
   "prisma": {
     "seed": "node prisma/seed.js"
   }
