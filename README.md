@@ -99,6 +99,34 @@ _Prisma Studio akan terbuka secara otomatis di browser Anda pada alamat `http://
 
 ---
 
+## Mengubah Kredensial Admin (Email & Password)
+
+Ada dua cara untuk mengubah email dan password akun administrator:
+
+### Cara 1: Sebelum/Saat Seeding Pertama Kali
+Sebelum menjalankan perintah `npx prisma db seed`, Anda dapat mengedit langsung data admin bawaan di file `prisma/seed.js` pada baris 32 dan 36:
+```javascript
+// prisma/seed.js
+const adminPassword = hashPassword("PASSWORD_BARU_ANDA"); // Ganti password di sini
+await prisma.admin.create({
+  data: {
+    name: "Administrator",
+    email: "email_baru@domain.com", // Ganti email di sini
+    password: adminPassword,
+  },
+});
+```
+
+### Cara 2: Menggunakan Script Interaktif (Kapan Saja)
+Jika database sudah berjalan dan Anda ingin memperbarui email atau password admin yang sudah terdaftar tanpa menghapus data lain, jalankan script interaktif berikut:
+
+```bash
+node scripts/update-admin.js
+```
+Script ini akan menanyakan email dan password baru secara interaktif, meng-hash password baru Anda secara aman, lalu menyimpannya langsung ke database.
+
+---
+
 ## Menjalankan Aplikasi
 
 ### Mode Pengembangan (Development)
