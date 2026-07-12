@@ -1,6 +1,15 @@
 @import "tailwindcss";
 
+@font-face {
+    font-family: "jakarta-sans";
+    src: url("/font/plus-jakarta-sans.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+}
+
 @theme inline {
+    --font-heading: var(--font-sans);
+    --font-sans: "jakarta-sans", sans-serif;
     /* Islamic Green Palette */
     --color-primary-50: #f0fdf4;
     --color-primary-100: #dcfce7;
@@ -13,9 +22,6 @@
     --color-primary-800: #166534;
     --color-primary-900: #14532d;
     --color-primary-950: #052e16;
-
-    --font-sans: var(--font-geist-sans);
-    --font-mono: var(--font-geist-mono);
 }
 
 :root {

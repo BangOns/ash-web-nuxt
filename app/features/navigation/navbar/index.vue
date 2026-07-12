@@ -1,50 +1,68 @@
 <script setup lang="ts">
+import { ref, computed, onMounted, onUnmounted } from "vue";
 import { navLinks } from "~/config/list-nav";
-import { ChevronDown } from "@lucide/vue";
+import { ChevronDown, Menu, X } from "@lucide/vue";
+
 const isOpen = ref(false);
 const isScrolled = ref(false);
 const route = useRoute();
-const navlink = computed(() => navLinks);
+
 const isLinkActive = (href: string) => {
     if (href === "/") {
         return route.path === "/";
     }
     return route.path.startsWith(href);
 };
-const isSolid = isScrolled || isOpen;
-const navBg = isSolid
-    ? "bg-white/95 backdrop-blur-md shadow-md border-b border-gray-100"
-    : "bg-transparent border-transparent";
-const textColor = isSolid ? "text-[#0B4A3F]" : "text-white/90";
-const hoverTextColor = isSolid
-    ? "hover:text-[#12866B]"
-    : "hover:text-yellow-400";
-const activeTextColor = isSolid ? "text-[#12866B]" : "text-yellow-400";
-const logoBg = isSolid
-    ? "bg-gradient-to-r from-teal-400 to-[#12866B]"
-    : "bg-[#B5E9D5]";
-const logoText = isSolid ? "text-white" : "text-[#0B4A3F]";
+
+// 1. Ganti menjadi Computed Properties agar reaktif
+const isSolid = computed(() => isScrolled.value || isOpen.value);
+
+const navBg = computed(() =>
+    isSolid.value
+        ? "bg-white/95 backdrop-blur-md shadow-md border-gray-100"
+        : "bg-transparent border-transparent",
+);
+
+const textColor = computed(() =>
+    isSolid.value ? "text-[#0B4A3F]" : "text-white/90",
+);
+
+const hoverTextColor = computed(() =>
+    isSolid.value ? "hover:text-[#12866B]" : "hover:text-yellow-400",
+);
+
+const activeTextColor = computed(() =>
+    isSolid.value ? "text-[#12866B]" : "text-yellow-400",
+);
+
+const logoBg = computed(() =>
+    isSolid.value
+        ? "bg-linear-to-r from-teal-400 to-[#12866B]"
+        : "bg-[#B5E9D5]",
+);
+
+const logoText = computed(() =>
+    isSolid.value ? "text-white" : "text-[#0B4A3F]",
+);
 
 const handleScroll = () => {
-    // Langsung assign nilai boolean-nya
     isScrolled.value = window.scrollY > 30;
 };
 
-// Pasang event saat komponen dirender di browser
 onMounted(() => {
     window.addEventListener("scroll", handleScroll);
-    handleScroll(); // Cek status saat pertama kali dimuat
+    handleScroll();
 });
 
-// Bersihkan event saat komponen dihancurkan (mirip return di useEffect)
 onUnmounted(() => {
     window.removeEventListener("scroll", handleScroll);
 });
 </script>
+
 <template>
     <header
         class="fixed top-0 z-50 w-full transition-all duration-300 ease-in-out"
-        :class="{ navBg }"
+        :class="navBg"
     >
         <section class="container mx-auto px-6 lg:px-12">
             <section class="flex items-center justify-between h-20 md:h-24">
@@ -52,9 +70,8 @@ onUnmounted(() => {
                     <NuxtLink href="/" class="flex items-center gap-3 group">
                         <div
                             class="w-10 h-10 rounded-xl flex items-center justify-center font-bold text-xl shadow-lg transition-colors"
-                            :class="[logoBg, logoText]"
                         >
-                            A
+                            <img src="/assets/img/logo-ash.png" />
                         </div>
                         <span
                             class="font-extrabold text-xl hidden sm:block tracking-wide uppercase transition-colors"
@@ -134,19 +151,6 @@ onUnmounted(() => {
                     </div>
                 </nav>
 
-                <!-- <div class="hidden lg:flex w-1/4 justify-end items-center">
-                    <NuxtLink
-                        to="/register"
-                        class="px-6 py-2.5 rounded-full font-bold text-sm tracking-wide transition-all shadow-md hover:shadow-lg hover:-translate-y-0.5"
-                        :class="
-                            isSolid
-                                ? 'bg-linear-to-r from-[#0B4A3F] to-[#07332b] text-white'
-                                : 'bg-white/10 backdrop-blur-sm border border-white/20 text-white hover:bg-white/20'
-                        "
-                    >
-                        DAFTAR
-                    </NuxtLink>
-                </div> -->
                 <div class="lg:hidden flex items-center">
                     <button
                         @click="isOpen = !isOpen"
@@ -158,12 +162,63 @@ onUnmounted(() => {
                         "
                     >
                         <span class="sr-only">Open main menu</span>
-
                         <X v-if="isOpen" class="block h-6 w-6" />
                         <Menu v-else class="block h-6 w-6" />
                     </button>
                 </div>
             </section>
         </section>
+
+        <aside
+            class="lg:hidden overflow-hidden transition-all duration-300 ease-in-out bg-white"
+            :class="
+                isOpen
+                    ? 'max-h-screen border-t border-gray-100 shadow-xl'
+                    : 'max-h-0'
+            "
+        >
+            <section class="px-4 py-6 space-y-4">
+                <section v-for="link in navLinks" :key="link.name">
+                    <section class="space-y-2" v-if="link.subLinks">
+                        <div
+                            class="px-3 py-2 text-sm font-bold tracking-widest uppercase text-[#0B4A3F]"
+                        >
+                            {{ link.name }}
+                        </div>
+                        <div
+                            class="pl-6 space-y-1 border-l-2 border-gray-100 ml-3"
+                        >
+                            <NuxtLink
+                                v-for="subLink in link.subLinks"
+                                :key="subLink.name"
+                                :to="subLink.href"
+                                class="block px-4 py-3 text-sm font-semibold rounded-xl transition-colors"
+                                :class="
+                                    route.path === subLink.href
+                                        ? 'text-[#12866B] bg-teal-50'
+                                        : 'text-gray-600 hover:bg-gray-50 hover:text-[#0B4A3F]'
+                                "
+                            >
+                                {{ subLink.name }}
+                            </NuxtLink>
+                        </div>
+                    </section>
+
+                    <NuxtLink
+                        v-else
+                        :to="link.href"
+                        class="flex items-center py-2 text-[13px] font-bold tracking-widest uppercase transition-colors relative"
+                        :class="[
+                            isLinkActive(link.href)
+                                ? activeTextColor
+                                : textColor,
+                            hoverTextColor,
+                        ]"
+                    >
+                        {{ link.name }}
+                    </NuxtLink>
+                </section>
+            </section>
+        </aside>
     </header>
 </template>

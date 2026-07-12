@@ -1,0 +1,106 @@
+datasource db {
+  provider = "sqlite"
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model Admin {
+  id        String   @id @default(uuid())
+  name      String
+  email     String   @unique
+  password  String
+  createdAt DateTime @default(now())
+}
+
+model News {
+  id         String   @id @default(uuid())
+  title      String
+  slug       String   @unique
+  thumbnail  String
+  excerpt    String
+  content    String
+  category   String
+  status     String   @default("DRAFT") // DRAFT, PUBLISHED
+  totalViews Int      @default(0)
+  createdAt  DateTime @default(now())
+}
+
+model Program {
+  id          String @id @default(uuid())
+  title       String
+  description String
+  icon        String
+  order       Int    @default(0)
+}
+
+model Testimonial {
+  id          String @id @default(uuid())
+  name        String
+  position    String
+  photo       String
+  testimonial String
+}
+
+model Organization {
+  id       String @id @default(uuid())
+  name     String
+  position String
+  photo    String
+  order    Int    @default(0)
+}
+
+model Announcement {
+  id          String   @id @default(uuid())
+  title       String
+  description String
+  createdAt   DateTime @default(now())
+}
+
+model Agenda {
+  id          String   @id @default(uuid())
+  title       String
+  description String
+  location    String
+  startDate   DateTime
+  endDate     DateTime
+  time        String   @default("")
+}
+
+model Gallery {
+  id          String @id @default(uuid())
+  title       String
+  description String
+  type        String // IMAGE, VIDEO
+  file        String
+  thumbnail   String
+}
+
+model VisitorMessage {
+  id        String   @id @default(uuid())
+  name      String
+  email     String
+  phone     String?
+  subject   String
+  message   String
+  status    String   @default("UNREAD") // UNREAD, READ
+  createdAt DateTime @default(now())
+}
+
+model HeroSettings {
+  id        String @id @default("hero")
+  title     String
+  subtitle  String
+  bgImage   String
+  btnText   String
+  btnLink   String
+}
+
+model ProfileSettings {
+  id       String @id @default("profile")
+  sejarah  String
+  visi     String
+  misi     String
+  sambutan String
+}
