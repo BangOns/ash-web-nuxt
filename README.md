@@ -141,7 +141,8 @@ Secara default, aplikasi akan berjalan di **`http://localhost:3002`** (sesuai ko
 
 ### Mode Produksi (Production)
 
-Untuk melakukan build dan menjalankan aplikasi dalam mode produksi:
+#### Cara A: Menjalankan Preview (Sederhana)
+Untuk melakukan build dan menjalankan aplikasi dalam mode produksi secara interaktif:
 
 ```bash
 # Build aplikasi
@@ -150,6 +151,27 @@ npm run build
 # Menjalankan preview aplikasi hasil build
 npm run preview
 ```
+
+#### Cara B: Menggunakan PM2 (Direkomendasikan untuk Server/VPS)
+Untuk menjalankan aplikasi di background pada server produksi menggunakan file konfigurasi PM2 yang sudah disediakan:
+
+```bash
+# 1. Build aplikasi terlebih dahulu
+npm run build
+
+# 2. Jalankan aplikasi menggunakan PM2
+pm2 start ecosystem.config.cjs
+
+# 3. Opsional: Mengatur agar PM2 otomatis menyala jika server restart
+pm2 startup
+pm2 save
+```
+
+Beberapa perintah PM2 yang berguna:
+- Melihat log aplikasi: `pm2 logs ash-web-nuxt`
+- Melihat status proses: `pm2 status`
+- Menghentikan aplikasi: `pm2 stop ash-web-nuxt`
+- Me-restart aplikasi: `pm2 restart ash-web-nuxt`
 
 ---
 

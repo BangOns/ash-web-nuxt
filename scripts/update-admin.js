@@ -1,3 +1,4 @@
+import "dotenv/config";
 import pkg from "@prisma/client";
 const { PrismaClient } = pkg;
 import { PrismaBetterSqlite3 } from "@prisma/adapter-better-sqlite3";
@@ -5,7 +6,8 @@ import { scryptSync, randomBytes } from "crypto";
 import readline from "readline";
 
 // Menginisialisasi Prisma dengan adapter SQLite
-const adapter = new PrismaBetterSqlite3({ url: "file:./dev.db" });
+const dbUrl = process.env.DATABASE_URL || "file:./dev.db";
+const adapter = new PrismaBetterSqlite3({ url: dbUrl });
 const prisma = new PrismaClient({ adapter });
 
 // Fungsi hashing password (sama seperti di seed dan auth)
