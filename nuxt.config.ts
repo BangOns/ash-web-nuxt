@@ -32,6 +32,10 @@ export default defineNuxtConfig({
           name: "viewport",
           content: "width=device-width, initial-scale=1.0",
         },
+        {
+          name: "google-site-verification",
+          content: "hligCcWWDDhfPqc5dDbnIMkQxABEX_NlVlEcDaLa4qk",
+        },
         // Open Graph / Facebook Meta Tags
         { property: "og:type", content: "website" },
         { property: "og:url", content: "https://ashhaburratib.or.id" },
