@@ -49,11 +49,11 @@ const bgImageSrc = computed(() => {
             >
                 <!-- Badge & Arabic Text -->
                 <section class="flex items-center gap-3 mb-6">
-                    <!-- <span
+                    <span
                         class="text-2xl font-serif text-[#B5E9D5] tracking-widest select-none"
                     >
                         اصحاب الرّاتب
-                    </span> -->
+                    </span>
                 </section>
 
                 <!-- Dynamic Title with Elegant Highlight -->
