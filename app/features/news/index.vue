@@ -50,12 +50,12 @@ const { newsData, formatDate } = await useNewsManagement();
                 </motion.p>
             </div>
             <div
-                class="absolute bottom-0.5 left-0 right-0 w-full z-20 pointer-events-none text-teal-50"
+                class="absolute bottom-0 left-0 right-0 w-full z-20 pointer-events-none text-teal-50"
             >
                 <svg
                     viewBox="0 0 1440 320"
                     preserveAspectRatio="none"
-                    class="w-full h-16 md:h-24 drop-shadow-xs"
+                    class="w-full h-16 md:h-24 drop-shadow-sm"
                 >
                     <path
                         fill="currentColor"
@@ -82,7 +82,7 @@ const { newsData, formatDate } = await useNewsManagement();
                             :src="news.thumbnail"
                             :alt="news.title"
                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-in-out"
-                        >
+                        />
                         <div
                             class="absolute inset-0 bg-[#0B4A3F]/60 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
                         />

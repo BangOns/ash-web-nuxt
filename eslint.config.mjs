@@ -13,6 +13,7 @@ export default withNuxt([
       "vue/no-multiple-template-root": "off",
       "vue/multi-word-component-names": "off",
       "import/first": "off",
+      "vue/html-self-closing": "off",
     },
   },
 ]);

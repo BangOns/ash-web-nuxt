@@ -20,7 +20,7 @@ const { article, formatDate } = await useNewsDetailManagement();
                 class="bg-[#0B4A3F] text-white pt-28 pb-40 md:pt-36 md:pb-48 relative overflow-hidden z-0"
             >
                 <div
-                    class="absolute top-0 left-0 w-full h-full opacity-10 pointer-events-none"
+                    class="absolute bottom-0 top-0 left-0 w-full h-full opacity-10 pointer-events-none"
                 >
                     <svg
                         class="w-full h-full text-white"
@@ -78,7 +78,7 @@ const { article, formatDate } = await useNewsDetailManagement();
 
                 <!-- SVG Decorative Curve Overlap -->
                 <div
-                    class="absolute bottom-0.5 left-0 right-0 w-full z-20 pointer-events-none text-teal-50"
+                    class="absolute bottom-0 left-0 right-0 w-full z-20 pointer-events-none text-teal-50"
                 >
                     <svg
                         viewBox="0 0 1440 320"
@@ -112,7 +112,7 @@ const { article, formatDate } = await useNewsDetailManagement();
                                 :src="article.thumbnail"
                                 :alt="article.title"
                                 class="w-full h-full object-cover shadow-inner"
-                            >
+                            />
                         </div>
 
                         <!-- Typed Body Container -->

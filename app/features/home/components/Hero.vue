@@ -24,7 +24,7 @@ const bgImageSrc = computed(() => {
         class="relative w-full min-h-screen flex items-center bg-linear-to-br from-[#062F26] via-[#0B4A3F] to-[#041D18] z-0 overflow-hidden pt-24 pb-20 lg:py-0"
     >
         <!-- Background patterns (Amber/Teal overlay) -->
-        <div
+        <header
             class="absolute top-0 left-0 w-full lg:w-1/2 h-full opacity-[0.03] lg:opacity-[0.05] pointer-events-none z-0"
         >
             <svg
@@ -37,27 +37,24 @@ const bgImageSrc = computed(() => {
                     d="M0,0 L20,0 L0,20 Z M50,0 L70,0 L0,70 L0,50 Z M100,0 L100,20 L20,100 L0,100 Z M100,50 L100,70 L70,100 L50,100 Z M100,100 L100,100 L100,100 L100,100 Z"
                 />
             </svg>
-        </div>
+        </header>
 
         <!-- Responsive Container -->
-        <div
+        <section
             class="container relative z-10 mx-auto px-6 lg:px-12 grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-8 items-center min-h-screen py-24 lg:py-0"
         >
             <!-- Left Column (Text & Buttons) -->
-            <motion.div
-                :initial="{ opacity: 0, x: -30 }"
-                :animate="{ opacity: 1, x: 0 }"
-                :transition="{ duration: 0.1, ease: 'easeOut' }"
+            <section
                 class="max-w-xl text-white flex flex-col justify-center order-1"
             >
                 <!-- Badge & Arabic Text -->
-                <div class="flex items-center gap-3 mb-6">
+                <section class="flex items-center gap-3 mb-6">
                     <span
                         class="text-2xl font-serif text-[#B5E9D5] tracking-widest select-none"
                     >
                         اصحاب الرّاتب
                     </span>
-                </div>
+                </section>
 
                 <!-- Dynamic Title with Elegant Highlight -->
                 <h1
@@ -80,7 +77,7 @@ const bgImageSrc = computed(() => {
                 </p>
 
                 <!-- CTA Buttons -->
-                <div class="flex flex-wrap gap-4 items-center">
+                <section class="flex flex-wrap gap-4 items-center">
                     <motion.div
                         :while-hover="{ scale: 1.05, y: -2 }"
                         :while-tap="{ scale: 0.95 }"
@@ -105,23 +102,20 @@ const bgImageSrc = computed(() => {
                             Profil Pondok
                         </NuxtLink>
                     </motion.div>
-                </div>
-            </motion.div>
+                </section>
+            </section>
 
             <!-- Right Column (The Image Card) -->
-            <div
+            <section
                 class="relative w-full flex items-center justify-center lg:justify-end z-10 order-2"
             >
                 <!-- Ambient Glow behind the card on desktop -->
-                <div
+                <section
                     class="hidden lg:block absolute right-0 top-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-[radial-gradient(circle,var(--tw-gradient-stops))] from-amber-500/10 via-teal-500/5 to-transparent blur-3xl pointer-events-none z-0"
                 />
 
                 <!-- The Card Frame with Soft Rotation -->
-                <motion.div
-                    :initial="{ opacity: 0, scale: 0.95, y: 30 }"
-                    :animate="{ opacity: 1, scale: 1, y: 0 }"
-                    :transition="{ duration: 0.1, ease: 'easeOut', delay: 0.2 }"
+                <div
                     class="relative w-full max-w-135 aspect-16/10 sm:aspect-video lg:aspect-16/10 rounded-3xl p-3 bg-white/5 backdrop-blur-xl border border-white/10 shadow-[0_20px_50px_rgba(4,29,24,0.4)] overflow-hidden group z-10 lg:rotate-1 hover:rotate-0 transition-all duration-500 ease-out"
                 >
                     <!-- Inner border highlighting -->
@@ -134,7 +128,7 @@ const bgImageSrc = computed(() => {
                         :src="bgImageSrc"
                         alt="Gedung Pondok Pesantren Ashhaburratib AL Madani"
                         class="w-full h-full object-cover rounded-2xl shadow-inner group-hover:scale-105 transition-transform duration-700 ease-out"
-                    >
+                    />
 
                     <!-- Elegant glassmorphic tag on the image -->
                     <div
@@ -156,12 +150,12 @@ const bgImageSrc = computed(() => {
                             Depok
                         </span>
                     </div>
-                </motion.div>
-            </div>
-        </div>
+                </div>
+            </section>
+        </section>
 
         <!-- Design gelombang (Bottom Curve Waves) -->
-        <div
+        <section
             class="absolute bottom-0 left-0 w-full z-20 pointer-events-none text-teal-50"
         >
             <svg
@@ -175,6 +169,6 @@ const bgImageSrc = computed(() => {
                     d="M0,160L80,149.3C160,139,320,117,480,128C640,139,800,181,960,181.3C1120,181,1280,139,1360,117.3L1440,96L1440,320L1360,320C1280,320,1120,320,960,320C800,320,640,320,480,320C320,320,160,320,80,320L0,320Z"
                 />
             </svg>
-        </div>
+        </section>
     </section>
 </template>
