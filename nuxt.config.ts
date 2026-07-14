@@ -4,6 +4,9 @@ import vueJsxPlugin from "@vitejs/plugin-vue-jsx";
 export default defineNuxtConfig({
   compatibilityDate: "2025-07-15",
   devtools: { enabled: true },
+  experimental: {
+    emitRouteChunkError: "automatic",
+  },
   site: {
     url: "https://ashhaburratib.or.id", // Ganti dengan domain produksi Anda nanti
     name: "Pondok Pesantren Ashhaburratib",
