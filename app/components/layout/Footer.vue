@@ -65,16 +65,16 @@ const currentYear = new Date().getFullYear();
                                     height="20"
                                     rx="5"
                                     ry="5"
-                                ></rect>
+                                />
                                 <path
                                     d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"
-                                ></path>
+                                />
                                 <line
                                     x1="17.5"
                                     y1="6.5"
                                     x2="17.51"
                                     y2="6.5"
-                                ></line>
+                                />
                             </svg>
                         </a>
                         <a
@@ -126,7 +126,7 @@ const currentYear = new Date().getFullYear();
                             >
                                 <span
                                     class="w-1.5 h-1.5 rounded-full bg-yellow-500"
-                                ></span>
+                                />
                                 Profile
                             </NuxtLink>
                         </li>
@@ -137,7 +137,7 @@ const currentYear = new Date().getFullYear();
                             >
                                 <span
                                     class="w-1.5 h-1.5 rounded-full bg-yellow-500"
-                                ></span>
+                                />
                                 News
                             </NuxtLink>
                         </li>
@@ -148,7 +148,7 @@ const currentYear = new Date().getFullYear();
                             >
                                 <span
                                     class="w-1.5 h-1.5 rounded-full bg-yellow-500"
-                                ></span>
+                                />
                                 Announcements
                             </NuxtLink>
                         </li>
@@ -159,7 +159,7 @@ const currentYear = new Date().getFullYear();
                             >
                                 <span
                                     class="w-1.5 h-1.5 rounded-full bg-yellow-500"
-                                ></span>
+                                />
                                 Gallery
                             </NuxtLink>
                         </li>
@@ -178,8 +178,8 @@ const currentYear = new Date().getFullYear();
                                 class="w-5 h-5 text-gray-400 shrink-0 mt-0.5"
                             />
                             <span class="text-gray-500 text-sm">
-                                Jl Mangga RT 06 RW 05<br />
-                                Kel. Beji, Kec. Beji<br />
+                                Jl Mangga RT 06 RW 05<br >
+                                Kel. Beji, Kec. Beji<br >
                                 Kota Depok, Jawa Barat
                             </span>
                         </li>
@@ -208,12 +208,12 @@ const currentYear = new Date().getFullYear();
                         Subscribe to our newsletter to receive the latest
                         updates and news.
                     </p>
-                    <form @submit.prevent class="space-y-2">
+                    <form class="space-y-2" @submit.prevent>
                         <input
                             type="email"
                             placeholder="Your email address"
                             class="w-full px-4 py-2 rounded-lg bg-gray-50 border border-gray-200 text-gray-900 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-yellow-500 text-sm"
-                        />
+                        >
                         <button
                             type="submit"
                             class="w-full bg-primary-950 hover:bg-primary-900 text-white font-medium py-2 px-4 rounded-lg transition-colors text-sm"

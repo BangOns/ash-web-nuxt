@@ -19,7 +19,7 @@ const computedMisiList = computed(() => {
   }
   return props.misi
     .split("\n")
-    .map((line) => line.replace(/^\d+[\.\s]*/, "").trim())
+    .map((line) => line.replace(/^\d+[.\s]*/, "").trim())
     .filter((line) => line.length > 0);
 });
 </script>
@@ -49,7 +49,7 @@ const computedMisiList = computed(() => {
         <div
           class="w-6 h-6 rounded-full bg-primary-500 shrink-0 flex items-center justify-center mt-1"
         >
-          <div class="w-2 h-2 bg-white rounded-full"></div>
+          <div class="w-2 h-2 bg-white rounded-full"/>
         </div>
         <p
           class="text-gray-700 dark:text-gray-300 text-lg font-medium leading-relaxed"

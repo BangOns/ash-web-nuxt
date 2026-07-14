@@ -27,9 +27,9 @@ const { form, submitted, hoverRating } = useSuggestionsForm();
       <p class="text-sm mt-1">Saran & Ulasan Anda telah kami terima.</p>
     </div>
 
-    <form v-else @submit.prevent="form.handleSubmit()" class="space-y-5">
+    <form v-else class="space-y-5" @submit.prevent="form.handleSubmit()">
       <!-- Star Rating Field (TanStack Form custom binding) -->
-      <component :is="form.Field" name="rating" v-slot="{ field }">
+      <component :is="form.Field" v-slot="{ field }" name="rating">
         <div class="space-y-2">
           <label
             class="block text-sm font-semibold text-gray-700 dark:text-gray-300"
@@ -41,10 +41,10 @@ const { form, submitted, hoverRating } = useSuggestionsForm();
               v-for="star in [1, 2, 3, 4, 5]"
               :key="star"
               type="button"
+              class="focus:outline-none transition-transform hover:scale-110 cursor-pointer"
               @click="field.handleChange(star)"
               @mouseenter="hoverRating = star"
               @mouseleave="hoverRating = 0"
-              class="focus:outline-none transition-transform hover:scale-110 cursor-pointer"
             >
               <Star
                 :class="[

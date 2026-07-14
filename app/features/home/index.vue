@@ -9,6 +9,6 @@
         <HomeComponentsProgram />
         <HomeComponentsNews />
         <HomeComponentsTestimonial />
-        <HomeComponentsFooter />
+        <HomeComponentsCtaSection />
     </article>
 </template>

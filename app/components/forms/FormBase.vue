@@ -5,7 +5,7 @@ import FieldError from "../ui/FieldError.vue";
 defineProps<{
   label?: string;
   required?: boolean;
-  errors?: any;
+  errors?: Array<{ message?: string } | string | undefined> | string;
   errorMessage?: string;
   class?: string;
 }>();

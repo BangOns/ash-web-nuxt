@@ -82,8 +82,8 @@ const bgImageSrc = computed(() => {
                 <!-- CTA Buttons -->
                 <div class="flex flex-wrap gap-4 items-center">
                     <motion.div
-                        :whileHover="{ scale: 1.05, y: -2 }"
-                        :whileTap="{ scale: 0.95 }"
+                        :while-hover="{ scale: 1.05, y: -2 }"
+                        :while-tap="{ scale: 0.95 }"
                     >
                         <NuxtLink
                             to="https://wa.me/628979415635"
@@ -95,8 +95,8 @@ const bgImageSrc = computed(() => {
                     </motion.div>
 
                     <motion.div
-                        :whileHover="{ scale: 1.05, y: -2 }"
-                        :whileTap="{ scale: 0.95 }"
+                        :while-hover="{ scale: 1.05, y: -2 }"
+                        :while-tap="{ scale: 0.95 }"
                     >
                         <NuxtLink
                             to="/profile/vision-mission"
@@ -115,7 +115,7 @@ const bgImageSrc = computed(() => {
                 <!-- Ambient Glow behind the card on desktop -->
                 <div
                     class="hidden lg:block absolute right-0 top-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-[radial-gradient(circle,var(--tw-gradient-stops))] from-amber-500/10 via-teal-500/5 to-transparent blur-3xl pointer-events-none z-0"
-                ></div>
+                />
 
                 <!-- The Card Frame with Soft Rotation -->
                 <motion.div
@@ -127,14 +127,14 @@ const bgImageSrc = computed(() => {
                     <!-- Inner border highlighting -->
                     <div
                         class="absolute inset-0 rounded-3xl border border-amber-400/20 pointer-events-none group-hover:border-amber-400/40 transition-colors duration-500"
-                    ></div>
+                    />
 
                     <!-- The building image -->
                     <img
                         :src="bgImageSrc"
                         alt="Gedung Pondok Pesantren Ashhaburratib AL Madani"
                         class="w-full h-full object-cover rounded-2xl shadow-inner group-hover:scale-105 transition-transform duration-700 ease-out"
-                    />
+                    >
 
                     <!-- Elegant glassmorphic tag on the image -->
                     <div
@@ -173,7 +173,7 @@ const bgImageSrc = computed(() => {
                     fill="currentColor"
                     stroke="currentColor"
                     d="M0,160L80,149.3C160,139,320,117,480,128C640,139,800,181,960,181.3C1120,181,1280,139,1360,117.3L1440,96L1440,320L1360,320C1280,320,1120,320,960,320C800,320,640,320,480,320C320,320,160,320,80,320L0,320Z"
-                ></path>
+                />
             </svg>
         </div>
     </section>

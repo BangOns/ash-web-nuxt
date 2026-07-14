@@ -39,7 +39,7 @@ const { groupedAgenda } = await useAgendaManagement();
                         >
                             <div
                                 class="absolute -left-6.75 top-6 w-4 h-4 rounded-full bg-primary-500 border-4 border-white dark:border-primary-950"
-                            ></div>
+                            />
                             <div
                                 class="flex flex-col sm:flex-row sm:items-start gap-2 sm:gap-6"
                             >

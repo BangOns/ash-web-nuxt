@@ -1,4 +1,5 @@
 import { ref } from "vue";
+import type { Organization } from "~/types";
 
 /**
  * Hook untuk mengelola data profil utama pondok pesantren dan kepengurusan organisasi di panel Admin
@@ -6,7 +7,7 @@ import { ref } from "vue";
 export const useAdminProfileManagement = async () => {
   const profileApi = useProfileApi();
   const organisasiApi = useOrganisasiApi();
-  const uploadApi = useUploadApi();
+  const { uploadFile } = useFileUpload();
 
   // ==========================================
   // STATE & LOGIKA PROFIL (SEJARAH, VISI, MISI)
@@ -46,7 +47,7 @@ export const useAdminProfileManagement = async () => {
   const { data: members, refresh: refreshMembers } =
     await organisasiApi.getMembers();
   const showMemberModal = ref(false);
-  const editingMember = ref<any>(null);
+  const editingMember = ref<Organization | null>(null);
   const memberForm = ref({
     id: "",
     name: "",
@@ -75,7 +76,7 @@ export const useAdminProfileManagement = async () => {
    * Membuka modal edit pengurus yang terpilih
    * @param member Objek pengurus
    */
-  const openEditMember = (member: any) => {
+  const openEditMember = (member: Organization) => {
     editingMember.value = member;
     memberForm.value = { ...member };
     showMemberModal.value = true;
@@ -88,13 +89,8 @@ export const useAdminProfileManagement = async () => {
     const target = e.target as HTMLInputElement;
     if (!target.files?.length) return;
     const file = target.files[0];
-    try {
-      if (!file) return;
-      const res = await uploadApi.upload(file);
-      if (res?.url) memberForm.value.photo = res.url;
-    } catch (err) {
-      console.error("Upload gagal:", err);
-    }
+    const url = await uploadFile(file);
+    if (url) memberForm.value.photo = url;
   };
 
   /**

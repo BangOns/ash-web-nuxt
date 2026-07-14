@@ -3,7 +3,9 @@ import { inject } from "vue";
 import FormBase from "./FormBase.vue";
 import Input from "../ui/Input.vue";
 
-const props = defineProps<{
+import type { Component } from "vue";
+
+defineProps<{
   name: string;
   label?: string;
   required?: boolean;
@@ -14,11 +16,15 @@ const props = defineProps<{
   disabled?: boolean;
 }>();
 
-const form = inject<any>("formContext");
+interface FormContext {
+  Field: Component;
+}
+
+const form = inject<FormContext | null>("formContext", null);
 </script>
 
 <template>
-  <component :is="form.Field" :name="name" v-slot="{ field }">
+  <component :is="form.Field" v-if="form" v-slot="{ field }" :name="name">
     <FormBase
       :label="label"
       :required="required"
@@ -29,11 +35,24 @@ const form = inject<any>("formContext");
         :type="type"
         :placeholder="placeholder"
         :disabled="disabled"
-        :modelValue="field.state.value"
-        @update:modelValue="field.handleChange"
-        @blur="field.handleBlur"
+        :model-value="field.state.value"
         :class="inputClass"
+        @update:model-value="field.handleChange"
+        @blur="field.handleBlur"
       />
     </FormBase>
   </component>
+  <FormBase
+    v-else
+    :label="label"
+    :required="required"
+    :class="$props.class"
+  >
+    <Input
+      :type="type"
+      :placeholder="placeholder"
+      :disabled="disabled"
+      :class="inputClass"
+    />
+  </FormBase>
 </template>

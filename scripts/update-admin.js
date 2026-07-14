@@ -1,9 +1,9 @@
 import "dotenv/config";
 import pkg from "@prisma/client";
-const { PrismaClient } = pkg;
 import { PrismaBetterSqlite3 } from "@prisma/adapter-better-sqlite3";
 import { scryptSync, randomBytes } from "crypto";
 import readline from "readline";
+const { PrismaClient } = pkg;
 
 // Menginisialisasi Prisma dengan adapter SQLite
 const dbUrl = process.env.DATABASE_URL || "file:./dev.db";

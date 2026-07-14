@@ -3,34 +3,43 @@ import { inject } from "vue";
 import FormBase from "./FormBase.vue";
 import Input from "../ui/Input.vue";
 
-const props = defineProps<{
-  name: string;
-  label?: string;
-  required?: boolean;
-  class?: string;
-  inputClass?: string;
-  disabled?: boolean;
+import type { Component } from "vue";
+
+defineProps<{
+    name: string;
+    label?: string;
+    required?: boolean;
+    class?: string;
+    inputClass?: string;
+    disabled?: boolean;
 }>();
 
-const form = inject<any>("formContext");
+interface FormContext {
+    Field: Component;
+}
+
+const form = inject<FormContext | null>("formContext", null);
 </script>
 
 <template>
-  <component :is="form.Field" :name="name" v-slot="{ field }">
-    <FormBase
-      :label="label"
-      :required="required"
-      :errors="field.state.meta.errors"
-      :class="$props.class"
-    >
-      <Input
-        type="date"
-        :disabled="disabled"
-        :modelValue="field.state.value"
-        @update:modelValue="field.handleChange"
-        @blur="field.handleBlur"
-        :class="inputClass"
-      />
+    <component :is="form.Field" v-if="form" v-slot="{ field }" :name="name">
+        <FormBase
+            :label="label"
+            :required="required"
+            :errors="field.state.meta.errors"
+            :class="$props.class"
+        >
+            <Input
+                type="date"
+                :disabled="disabled"
+                :model-value="field.state.value"
+                :class="inputClass"
+                @update:model-value="field.handleChange"
+                @blur="field.handleBlur"
+            />
+        </FormBase>
+    </component>
+    <FormBase v-else :label="label" :required="required" :class="$props.class">
+        <Input type="date" :disabled="disabled" :class="inputClass" />
     </FormBase>
-  </component>
 </template>

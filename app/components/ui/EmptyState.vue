@@ -22,7 +22,7 @@ withDefaults(defineProps<Props>(), {
             <!-- Glow effect -->
             <div
                 class="absolute inset-0 bg-linear-to-tr from-teal-400/20 to-amber-400/20 rounded-full blur-xl scale-125"
-            ></div>
+            />
 
             <!-- Icon Wrapper -->
             <div

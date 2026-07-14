@@ -60,7 +60,7 @@ const { newsData, formatDate } = await useNewsManagement();
                     <path
                         fill="currentColor"
                         d="M0,160L80,149.3C160,139,320,117,480,128C640,139,800,181,960,181.3C1120,181,1280,139,1360,117.3L1440,96L1440,320L1360,320C1280,320,1120,320,960,320C800,320,640,320,480,320C320,320,160,320,80,320L0,320Z"
-                    ></path>
+                    />
                 </svg>
             </div>
         </section>
@@ -82,10 +82,10 @@ const { newsData, formatDate } = await useNewsManagement();
                             :src="news.thumbnail"
                             :alt="news.title"
                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-in-out"
-                        />
+                        >
                         <div
                             class="absolute inset-0 bg-[#0B4A3F]/60 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-                        ></div>
+                        />
                         <div
                             class="absolute top-4 left-4 bg-white/95 backdrop-blur-xs px-4 py-2 rounded-full text-[10px] font-extrabold uppercase tracking-wider text-[#0B4A3F] shadow-xs"
                         >

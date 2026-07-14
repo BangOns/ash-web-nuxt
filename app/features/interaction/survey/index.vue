@@ -49,7 +49,7 @@ const { form, submitted } = useSurveyForm();
       </p>
     </div>
 
-    <form v-else @submit.prevent="form.handleSubmit()" class="space-y-5">
+    <form v-else class="space-y-5" @submit.prevent="form.handleSubmit()">
       <FormInput
         name="name"
         label="Nama Lengkap (Opsional)"
@@ -65,7 +65,7 @@ const { form, submitted } = useSurveyForm();
       </FormSelect>
 
       <!-- Satisfaction Radio Binding (TanStack Form custom binding) -->
-      <component :is="form.Field" name="satisfaction" v-slot="{ field }">
+      <component :is="form.Field" v-slot="{ field }" name="satisfaction">
         <div class="space-y-2">
           <label
             class="block text-sm font-semibold text-gray-700 dark:text-gray-300"
@@ -87,9 +87,9 @@ const { form, submitted } = useSurveyForm();
                 :name="field.name"
                 :value="rating"
                 :checked="field.state.value === rating"
-                @change="field.handleChange(rating)"
                 class="w-4 h-4 text-[#0B4A3F] focus:ring-[#0B4A3F]"
-              />
+                @change="field.handleChange(rating)"
+              >
               <span class="text-sm dark:text-gray-300 font-semibold">{{ rating }}</span>
             </label>
           </div>

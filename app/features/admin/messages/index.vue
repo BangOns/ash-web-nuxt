@@ -38,7 +38,6 @@ const { messages, selectedMessage, viewMessage, toggleStatus, deleteMessage } =
                     <div
                         v-for="msg in messages"
                         :key="msg.id"
-                        @click="viewMessage(msg)"
                         :class="[
                             'p-5 cursor-pointer hover:bg-gray-50/40 transition-colors text-left flex flex-col gap-1',
                             selectedMessage?.id === msg.id
@@ -46,6 +45,7 @@ const { messages, selectedMessage, viewMessage, toggleStatus, deleteMessage } =
                                 : '',
                             msg.status === 'UNREAD' ? 'bg-amber-50/20' : '',
                         ]"
+                        @click="viewMessage(msg)"
                     >
                         <div class="flex justify-between items-center">
                             <span
@@ -72,7 +72,7 @@ const { messages, selectedMessage, viewMessage, toggleStatus, deleteMessage } =
                             <span
                                 v-if="msg.status === 'UNREAD'"
                                 class="w-1.5 h-1.5 bg-amber-500 rounded-full shrink-0"
-                            ></span>
+                            />
                         </div>
                         <p
                             class="text-[10px] text-gray-455 truncate mt-0.5 leading-relaxed"
@@ -170,8 +170,8 @@ const { messages, selectedMessage, viewMessage, toggleStatus, deleteMessage } =
                 >
                     <div class="flex gap-2">
                         <button
-                            @click="toggleStatus(selectedMessage)"
                             class="flex items-center gap-2 px-4 py-2 bg-gray-100 hover:bg-gray-200 text-gray-700 font-bold text-xs rounded-xl transition-colors cursor-pointer"
+                            @click="toggleStatus(selectedMessage)"
                         >
                             <component
                                 :is="
@@ -190,8 +190,8 @@ const { messages, selectedMessage, viewMessage, toggleStatus, deleteMessage } =
                         </button>
                     </div>
                     <button
-                        @click="deleteMessage(selectedMessage.id)"
                         class="flex items-center gap-2 px-4 py-2 bg-red-50 hover:bg-red-100 text-red-655 font-bold text-xs rounded-xl transition-colors cursor-pointer"
+                        @click="deleteMessage(selectedMessage.id)"
                     >
                         <Trash2 class="w-4 h-4 text-red-600" />
                         Hapus Pesan

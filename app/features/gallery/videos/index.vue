@@ -31,7 +31,7 @@ const { data: videos } = await useGalleryApi().getGallery("VIDEO");
               :src="vid.thumbnail"
               :alt="vid.title"
               class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-            />
+            >
 
             <!-- Play Button Overlay -->
             <div
@@ -42,7 +42,7 @@ const { data: videos } = await useGalleryApi().getGallery("VIDEO");
               >
                 <div
                   class="w-0 h-0 border-t-8 border-t-transparent border-l-12 border-l-white border-b-8 border-b-transparent ml-1"
-                ></div>
+                />
               </div>
             </div>
           </div>

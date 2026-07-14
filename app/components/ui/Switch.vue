@@ -16,12 +16,12 @@ const emit = defineEmits<{
         role="switch"
         :aria-checked="modelValue"
         :disabled="disabled"
-        @click="emit('update:modelValue', !modelValue)"
         :class="[
             'relative inline-flex h-6 w-11 shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out outline-none focus:ring-2 focus:ring-[#0B4A3F]/20 disabled:cursor-not-allowed disabled:opacity-50',
             modelValue ? 'bg-[#0B4A3F]' : 'bg-gray-200 dark:bg-gray-850',
             $props.class,
         ]"
+        @click="emit('update:modelValue', !modelValue)"
     >
         <span
             :class="[

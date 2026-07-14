@@ -249,5 +249,6 @@ export default defineNuxtConfig({
     "@pinia/nuxt",
     "motion-v/nuxt",
     "nuxt-swiper",
+    "@nuxt/eslint",
   ],
 });

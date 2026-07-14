@@ -1,8 +1,9 @@
 <script setup lang="ts">
+import { ref } from "vue";
 import { motion } from "motion-v";
 import { User, Calendar } from "@lucide/vue";
 
-const entries = [
+const entries = ref([
     {
         name: "Ahmad Zainuddin",
         as: "Alumni 2018",
@@ -21,7 +22,36 @@ const entries = [
         date: "28 Feb 2026",
         msg: "Kajian rutin ahad kitab Hikam sangat menyejukkan hati. Terus syiarkan dakwah Islami.",
     },
-];
+]);
+
+const inputName = ref("");
+const inputAs = ref("");
+const inputMsg = ref("");
+
+const handleSubmit = () => {
+    if (!inputName.value.trim() || !inputMsg.value.trim()) {
+        alert("Nama dan pesan wajib diisi!");
+        return;
+    }
+    const today = new Date();
+    const formattedDate = today.toLocaleDateString("id-ID", {
+        day: "2-digit",
+        month: "short",
+        year: "numeric",
+    });
+
+    entries.value.unshift({
+        name: inputName.value.trim(),
+        as: inputAs.value.trim() || "Umum",
+        date: formattedDate,
+        msg: inputMsg.value.trim(),
+    });
+
+    // Reset Form
+    inputName.value = "";
+    inputAs.value = "";
+    inputMsg.value = "";
+};
 </script>
 
 <template>
@@ -42,28 +72,34 @@ const entries = [
                 >
                     Isi Buku Tamu
                 </h3>
-                <div class="flex flex-col sm:flex-row gap-3">
+                <form class="flex flex-col sm:flex-row gap-3" @submit.prevent="handleSubmit">
                     <input
+                        v-model="inputName"
                         type="text"
                         placeholder="Nama Anda"
+                        required
                         class="w-full sm:w-1/3 px-4 py-2.5 rounded-xl border border-white dark:border-primary-800 focus:outline-none focus:ring-2 focus:ring-primary-500 bg-white dark:bg-primary-950 text-sm shadow-sm"
-                    />
+                    >
                     <input
+                        v-model="inputAs"
                         type="text"
                         placeholder="Asal/Instansi"
                         class="w-full sm:w-1/3 px-4 py-2.5 rounded-xl border border-white dark:border-primary-800 focus:outline-none focus:ring-2 focus:ring-primary-500 bg-white dark:bg-primary-950 text-sm shadow-sm"
-                    />
+                    >
                     <input
+                        v-model="inputMsg"
                         type="text"
                         placeholder="Pesan singkat..."
+                        required
                         class="w-full grow px-4 py-2.5 rounded-xl border border-white dark:border-primary-800 focus:outline-none focus:ring-2 focus:ring-primary-500 bg-white dark:bg-primary-950 text-sm shadow-sm"
-                    />
+                    >
                     <button
-                        class="bg-primary-600 hover:bg-primary-500 text-white px-6 py-2.5 rounded-xl font-semibold shadow-md text-sm transition-colors whitespace-nowrap"
+                        type="submit"
+                        class="bg-primary-600 hover:bg-primary-500 text-white px-6 py-2.5 rounded-xl font-semibold shadow-md text-sm transition-colors whitespace-nowrap cursor-pointer"
                     >
                         Kirim
                     </button>
-                </div>
+                </form>
             </div>
 
             <!-- Entries List -->

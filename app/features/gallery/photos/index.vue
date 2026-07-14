@@ -27,7 +27,7 @@ const { data: images } = await useGalleryApi().getGallery("IMAGE");
                     :src="img.file"
                     :alt="img.title"
                     class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
-                />
+                >
                 <div
                     class="absolute inset-0 bg-linear-to-t from-primary-950/90 via-primary-900/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end"
                 >

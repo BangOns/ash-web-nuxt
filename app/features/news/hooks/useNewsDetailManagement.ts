@@ -6,14 +6,8 @@ export const useNewsDetailManagement = async () => {
 
   const { data: article } = await useNewsApi().getSingleNews(id);
 
-  const formatDate = (dateStr: string) => {
-    if (!dateStr) return "";
-    return new Date(dateStr).toLocaleDateString("id-ID", {
-      day: "numeric",
-      month: "long",
-      year: "numeric",
-    });
-  };
+  const formatDate = (dateStr: string) => formatDateId(dateStr);
+
 
   return {
     article,

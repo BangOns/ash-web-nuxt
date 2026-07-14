@@ -1,9 +1,11 @@
 <script setup lang="ts">
-import { inject, ref } from "vue";
+import { inject } from "vue";
 import FormBase from "./FormBase.vue";
 import { Upload, FileText } from "@lucide/vue";
 
-const props = defineProps<{
+import type { Component } from "vue";
+
+defineProps<{
     name: string;
     label?: string;
     required?: boolean;
@@ -11,30 +13,37 @@ const props = defineProps<{
     disabled?: boolean;
 }>();
 
-const form = inject<any>("formContext");
-const uploading = ref(false);
-const uploadApi = useUploadApi();
+interface FormContext {
+    Field: Component;
+}
 
-const onFileChange = async (e: Event, field: any) => {
+interface FieldContext {
+    handleChange: (value: string) => void;
+    handleBlur?: () => void;
+    state: {
+        value: string | undefined | null;
+        meta: {
+            errors: Array<{ message?: string } | string | undefined> | string;
+        };
+    };
+}
+
+const form = inject<FormContext | null>("formContext", null);
+const { uploadFile, uploading } = useFileUpload();
+
+const onFileChange = async (e: Event, field: FieldContext) => {
     const target = e.target as HTMLInputElement;
     if (!target.files?.length) return;
     const file = target.files[0];
-    uploading.value = true;
-    try {
-        const res = await uploadApi.upload(file);
-        if (res?.url && field) {
-            field.handleChange(res.url);
-        }
-    } catch (err) {
-        console.error("Gagal mengunggah file:", err);
-    } finally {
-        uploading.value = false;
+    const url = await uploadFile(file);
+    if (url && field) {
+        field.handleChange(url);
     }
 };
 </script>
 
 <template>
-    <component :is="form?.Field" :name="name" v-slot="{ field }">
+    <component :is="form.Field" v-if="form" v-slot="{ field }" :name="name">
         <FormBase
             :label="label"
             :required="required"
@@ -72,9 +81,22 @@ const onFileChange = async (e: Event, field: any) => {
                         type="file"
                         class="hidden"
                         @change="onFileChange($event, field)"
-                    />
+                    >
                 </label>
             </div>
         </FormBase>
     </component>
+    <FormBase
+        v-else
+        :label="label"
+        :required="required"
+        :class="$props.class"
+    >
+        <div class="flex flex-col gap-2">
+            <label class="cursor-pointer inline-flex items-center justify-center gap-2 w-fit px-4 py-2.5 rounded-xl border border-gray-250 text-xs font-semibold text-gray-700 bg-white hover:bg-gray-50 hover:text-gray-800 transition-all select-none shadow-sm opacity-50 pointer-events-none">
+                <Upload class="w-4 h-4 text-gray-500" />
+                Pilih Berkas
+            </label>
+        </div>
+    </FormBase>
 </template>

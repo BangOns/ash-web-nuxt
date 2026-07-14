@@ -45,35 +45,35 @@ const {
         <!-- Tabs Header -->
         <div class="flex border-b border-gray-200 gap-4">
             <button
-                @click="activeTab = 'hero'"
                 :class="[
                     'px-6 py-3 font-bold text-sm border-b-2 transition-all cursor-pointer',
                     activeTab === 'hero'
                         ? 'border-teal-600 text-teal-600'
                         : 'border-transparent text-gray-500 hover:text-gray-700',
                 ]"
+                @click="activeTab = 'hero'"
             >
                 Hero Section
             </button>
             <button
-                @click="activeTab = 'programs'"
                 :class="[
                     'px-6 py-3 font-bold text-sm border-b-2 transition-all cursor-pointer',
                     activeTab === 'programs'
                         ? 'border-teal-600 text-teal-600'
                         : 'border-transparent text-gray-500 hover:text-gray-700',
                 ]"
+                @click="activeTab = 'programs'"
             >
                 Program Pendidikan
             </button>
             <button
-                @click="activeTab = 'testimonials'"
                 :class="[
                     'px-6 py-3 font-bold text-sm border-b-2 transition-all cursor-pointer',
                     activeTab === 'testimonials'
                         ? 'border-teal-600 text-teal-600'
                         : 'border-transparent text-gray-500 hover:text-gray-700',
                 ]"
+                @click="activeTab = 'testimonials'"
             >
                 Testimoni
             </button>
@@ -103,7 +103,7 @@ const {
                                 v-model="hero.title"
                                 type="text"
                                 class="w-full px-4 py-2.5 rounded-xl border border-gray-200 text-sm focus:ring-2 focus:ring-teal-500 focus:outline-none"
-                            />
+                            >
                         </div>
                         <div class="space-y-1">
                             <label
@@ -114,7 +114,7 @@ const {
                                 v-model="hero.subtitle"
                                 rows="3"
                                 class="w-full px-4 py-2.5 rounded-xl border border-gray-200 text-sm focus:ring-2 focus:ring-teal-500 focus:outline-none resize-none"
-                            ></textarea>
+                            />
                         </div>
                         <div class="grid grid-cols-2 gap-4">
                             <div class="space-y-1">
@@ -126,7 +126,7 @@ const {
                                     v-model="hero.btnText"
                                     type="text"
                                     class="w-full px-4 py-2.5 rounded-xl border border-gray-200 text-sm focus:ring-2 focus:ring-teal-500 focus:outline-none"
-                                />
+                                >
                             </div>
                             <div class="space-y-1">
                                 <label
@@ -137,7 +137,7 @@ const {
                                     v-model="hero.btnLink"
                                     type="text"
                                     class="w-full px-4 py-2.5 rounded-xl border border-gray-200 text-sm focus:ring-2 focus:ring-teal-500 focus:outline-none"
-                                />
+                                >
                             </div>
                         </div>
                     </div>
@@ -152,7 +152,7 @@ const {
                                 v-model="hero.bgImage"
                                 type="text"
                                 class="w-full px-4 py-2.5 rounded-xl border border-gray-200 text-sm focus:ring-2 focus:ring-teal-500 focus:outline-none"
-                            />
+                            >
                         </div>
                         <div class="space-y-2">
                             <label
@@ -172,7 +172,7 @@ const {
                                     class="hidden"
                                     accept="image/*"
                                     @change="handleHeroUpload"
-                                />
+                                >
                             </label>
                         </div>
                         <div
@@ -181,7 +181,7 @@ const {
                             <img
                                 :src="hero.bgImage"
                                 class="w-full h-full object-cover"
-                            />
+                            >
                         </div>
                     </div>
                 </div>
@@ -190,20 +190,20 @@ const {
                     class="flex items-center justify-between border-t border-gray-100 pt-6"
                 >
                     <div
-                        class="flex items-center gap-2 text-emerald-600 text-sm font-semibold"
                         v-if="heroSaved"
+                        class="flex items-center gap-2 text-emerald-600 text-sm font-semibold"
                     >
                         <Check
                             class="w-5 h-5 bg-emerald-100 rounded-full p-1"
                         />
                         Perubahan berhasil disimpan!
                     </div>
-                    <div v-else></div>
+                    <div v-else/>
 
                     <button
-                        @click="saveHero"
                         :disabled="heroLoading"
                         class="flex items-center gap-2 px-6 py-3 bg-[#0B4A3F] hover:bg-[#0E5C4E] text-white font-bold rounded-xl text-sm transition-all shadow-md cursor-pointer disabled:bg-gray-400"
+                        @click="saveHero"
                     >
                         <Save class="w-4 h-4" />
                         Simpan Perubahan
@@ -223,8 +223,8 @@ const {
                             Daftar Program
                         </h3>
                         <button
-                            @click="openAddProgram"
                             class="flex items-center gap-2 px-4 py-2 bg-[#0B4A3F] hover:bg-[#0E5C4E] text-white font-bold text-xs rounded-xl shadow-sm transition-all cursor-pointer"
+                            @click="openAddProgram"
                         >
                             <Plus class="w-4 h-4" /> Tambah Program
                         </button>
@@ -262,14 +262,14 @@ const {
                                 class="flex gap-2 border-t border-gray-200/50 mt-4 pt-3 justify-end"
                             >
                                 <button
-                                    @click="openEditProgram(prog)"
                                     class="p-2 text-teal-600 hover:bg-teal-50 rounded-lg transition-colors cursor-pointer"
+                                    @click="openEditProgram(prog)"
                                 >
                                     <Edit2 class="w-4 h-4" />
                                 </button>
                                 <button
-                                    @click="deleteProgram(prog.id)"
                                     class="p-2 text-red-600 hover:bg-red-55 rounded-lg transition-colors cursor-pointer"
+                                    @click="deleteProgram(prog.id)"
                                 >
                                     <Trash2 class="w-4 h-4" />
                                 </button>
@@ -291,8 +291,8 @@ const {
                             Daftar Testimoni
                         </h3>
                         <button
-                            @click="openAddTesti"
                             class="flex items-center gap-2 px-4 py-2 bg-[#0B4A3F] hover:bg-[#0E5C4E] text-white font-bold text-xs rounded-xl shadow-sm transition-all cursor-pointer"
+                            @click="openAddTesti"
                         >
                             <Plus class="w-4 h-4" /> Tambah Testimoni
                         </button>
@@ -307,7 +307,7 @@ const {
                             <img
                                 :src="testi.photo"
                                 class="w-16 h-16 rounded-full object-cover bg-gray-200 shrink-0"
-                            />
+                            >
                             <div class="grow flex flex-col justify-between">
                                 <div>
                                     <h4 class="font-bold text-gray-800 text-sm">
@@ -326,14 +326,14 @@ const {
                                     class="flex gap-2 justify-end border-t border-gray-200/50 mt-4 pt-3"
                                 >
                                     <button
-                                        @click="openEditTesti(testi)"
                                         class="p-2 text-teal-600 hover:bg-teal-50 rounded-lg transition-colors cursor-pointer"
+                                        @click="openEditTesti(testi)"
                                     >
                                         <Edit2 class="w-4 h-4" />
                                     </button>
                                     <button
-                                        @click="deleteTesti(testi.id)"
                                         class="p-2 text-red-600 hover:bg-red-50 rounded-lg transition-colors cursor-pointer"
+                                        @click="deleteTesti(testi.id)"
                                     >
                                         <Trash2 class="w-4 h-4" />
                                     </button>
@@ -371,7 +371,7 @@ const {
                             v-model="programForm.title"
                             type="text"
                             class="w-full px-4 py-2.5 rounded-xl border border-gray-200 text-sm focus:outline-none focus:ring-2 focus:ring-teal-500"
-                        />
+                        >
                     </div>
                     <div class="space-y-1">
                         <label class="text-xs font-bold text-gray-500 uppercase"
@@ -381,7 +381,7 @@ const {
                             v-model="programForm.description"
                             rows="3"
                             class="w-full px-4 py-2.5 rounded-xl border border-gray-200 text-sm focus:outline-none focus:ring-2 focus:ring-teal-500 resize-none"
-                        ></textarea>
+                        />
                     </div>
                     <div class="grid grid-cols-2 gap-4">
                         <div class="space-y-1">
@@ -410,7 +410,7 @@ const {
                                 v-model="programForm.order"
                                 type="number"
                                 class="w-full px-4 py-2.5 rounded-xl border border-gray-200 text-sm focus:outline-none focus:ring-2 focus:ring-teal-500"
-                            />
+                            >
                         </div>
                     </div>
                 </div>
@@ -418,14 +418,14 @@ const {
                     class="flex justify-end gap-3 border-t border-gray-100 pt-4"
                 >
                     <button
-                        @click="showProgramModal = false"
                         class="px-4 py-2 text-gray-550 hover:bg-gray-55/70 rounded-xl text-xs font-semibold cursor-pointer"
+                        @click="showProgramModal = false"
                     >
                         Batal
                     </button>
                     <button
-                        @click="saveProgram"
                         class="px-5 py-2.5 bg-[#0B4A3F] hover:bg-[#0E5C4E] text-white font-bold rounded-xl text-xs shadow-sm cursor-pointer"
+                        @click="saveProgram"
                     >
                         Simpan
                     </button>
@@ -460,7 +460,7 @@ const {
                             v-model="testiForm.name"
                             type="text"
                             class="w-full px-4 py-2.5 rounded-xl border border-gray-200 text-sm focus:outline-none focus:ring-2 focus:ring-teal-500"
-                        />
+                        >
                     </div>
                     <div class="space-y-1">
                         <label class="text-xs font-bold text-gray-500 uppercase"
@@ -471,7 +471,7 @@ const {
                             type="text"
                             class="w-full px-4 py-2.5 rounded-xl border border-gray-200 text-sm focus:outline-none focus:ring-2 focus:ring-teal-500"
                             placeholder="Contoh: Alumni 2018"
-                        />
+                        >
                     </div>
                     <div class="space-y-1">
                         <label class="text-xs font-bold text-gray-500 uppercase"
@@ -481,7 +481,7 @@ const {
                             v-model="testiForm.testimonial"
                             rows="3"
                             class="w-full px-4 py-2.5 rounded-xl border border-gray-200 text-sm focus:outline-none focus:ring-2 focus:ring-teal-500 resize-none"
-                        ></textarea>
+                        />
                     </div>
                     <div class="space-y-1">
                         <label class="text-xs font-bold text-gray-500 uppercase"
@@ -491,7 +491,7 @@ const {
                             v-model="testiForm.photo"
                             type="text"
                             class="w-full px-4 py-2.5 rounded-xl border border-gray-200 text-sm focus:outline-none focus:ring-2 focus:ring-teal-500"
-                        />
+                        >
                     </div>
                     <div class="space-y-2">
                         <label
@@ -508,7 +508,7 @@ const {
                                 class="hidden"
                                 accept="image/*"
                                 @change="handleTestiUpload"
-                            />
+                            >
                         </label>
                     </div>
                 </div>
@@ -516,14 +516,14 @@ const {
                     class="flex justify-end gap-3 border-t border-gray-100 pt-4"
                 >
                     <button
-                        @click="showTestiModal = false"
                         class="px-4 py-2 text-gray-550 hover:bg-gray-55/70 rounded-xl text-xs font-semibold cursor-pointer"
+                        @click="showTestiModal = false"
                     >
                         Batal
                     </button>
                     <button
-                        @click="saveTesti"
                         class="px-5 py-2.5 bg-[#0B4A3F] hover:bg-[#0E5C4E] text-white font-bold rounded-xl text-xs shadow-sm cursor-pointer"
+                        @click="saveTesti"
                     >
                         Simpan
                     </button>

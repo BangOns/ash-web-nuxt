@@ -97,8 +97,8 @@ const logout = async () => {
                     </div>
                 </div>
                 <button
-                    @click="logout"
                     class="w-full flex items-center justify-center gap-3 px-4 py-3 bg-red-600/20 hover:bg-red-600 hover:text-white text-red-200 rounded-xl text-sm font-semibold transition-all border border-red-500/30 cursor-pointer"
+                    @click="logout"
                 >
                     <LogOut class="w-4 h-4" />
                     Keluar
@@ -111,7 +111,7 @@ const logout = async () => {
             v-if="sidebarOpen"
             class="fixed inset-0 bg-black/50 z-40 lg:hidden"
             @click="sidebarOpen = false"
-        ></div>
+        />
 
         <!-- Mobile Sidebar -->
         <aside
@@ -139,8 +139,8 @@ const logout = async () => {
                     </div>
                 </div>
                 <button
-                    @click="sidebarOpen = false"
                     class="text-teal-100 hover:text-white"
+                    @click="sidebarOpen = false"
                 >
                     <X class="w-6 h-6" />
                 </button>
@@ -151,13 +151,13 @@ const logout = async () => {
                     v-for="item in menuItems"
                     :key="item.name"
                     :to="item.href"
-                    @click="sidebarOpen = false"
                     :class="[
                         'flex items-center gap-4 px-4 py-3.5 rounded-xl font-medium text-sm transition-all',
                         route.path === item.href
                             ? 'bg-yellow-400 text-teal-950 font-bold'
                             : 'text-teal-100 hover:bg-[#0E5C4E] hover:text-white',
                     ]"
+                    @click="sidebarOpen = false"
                 >
                     <component :is="item.icon" class="w-5 h-5" />
                     {{ item.name }}
@@ -181,8 +181,8 @@ const logout = async () => {
                     </div>
                 </div>
                 <button
-                    @click="logout"
                     class="w-full flex items-center justify-center gap-3 px-4 py-3 bg-red-600/20 hover:bg-red-600 hover:text-white text-red-200 rounded-xl text-sm font-semibold transition-all border border-red-500/30 cursor-pointer"
+                    @click="logout"
                 >
                     <LogOut class="w-4 h-4" />
                     Keluar
@@ -198,8 +198,8 @@ const logout = async () => {
             >
                 <div class="flex items-center gap-4">
                     <button
-                        @click="sidebarOpen = true"
                         class="text-gray-500 hover:text-gray-800 lg:hidden focus:outline-none"
+                        @click="sidebarOpen = true"
                     >
                         <Menu class="w-6 h-6" />
                     </button>

@@ -5,13 +5,8 @@ import { ArrowRight, ArrowUpRight, Calendar } from "@lucide/vue";
 
 const { data: newsData } = await useNewsApi().getNews();
 
-const formatDate = (dateStr: string) => {
-    return new Date(dateStr).toLocaleDateString("id-ID", {
-        day: "numeric",
-        month: "long",
-        year: "numeric",
-    });
-};
+const formatDate = (dateStr: string) => formatDateId(dateStr);
+
 </script>
 
 <template>
@@ -56,7 +51,7 @@ const formatDate = (dateStr: string) => {
                 <motion.div
                     v-if="newsData?.length"
                     :initial="{ opacity: 0, y: 30 }"
-                    :whileInView="{ opacity: 1, y: 0 }"
+                    :while-in-view="{ opacity: 1, y: 0 }"
                     :viewport="{ once: true, margin: '-50px' }"
                     :transition="{ duration: 0.6 }"
                     class="lg:col-span-7 group cursor-pointer"
@@ -69,10 +64,10 @@ const formatDate = (dateStr: string) => {
                                 :src="newsData[0]?.thumbnail"
                                 :alt="newsData[0]?.title"
                                 class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
-                            />
+                            >
                             <div
                                 class="absolute inset-0 bg-linear-to-t from-[#0B4A3F] via-[#0B4A3F]/50 to-transparent"
-                            ></div>
+                            />
 
                             <div class="absolute top-6 left-6 flex gap-3">
                                 <span
@@ -120,7 +115,7 @@ const formatDate = (dateStr: string) => {
                         v-for="(news, idx) in newsData?.slice(1, 4)"
                         :key="news.id"
                         :initial="{ opacity: 0, x: 30 }"
-                        :whileInView="{ opacity: 1, x: 0 }"
+                        :while-in-view="{ opacity: 1, x: 0 }"
                         :viewport="{ once: true, margin: '-50px' }"
                         :transition="{ duration: 0.5, delay: idx * 0.15 }"
                         class="group cursor-pointer"
@@ -136,7 +131,7 @@ const formatDate = (dateStr: string) => {
                                     :src="news.thumbnail"
                                     :alt="news.title"
                                     class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
-                                />
+                                >
                                 <div class="absolute top-2 left-2">
                                     <span
                                         class="bg-white/95 backdrop-blur-xs text-[#0B4A3F] text-[9px] font-bold uppercase tracking-wider px-2 py-1 rounded-md shadow-xs border border-gray-200/40"

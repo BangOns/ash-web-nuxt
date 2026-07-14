@@ -39,16 +39,16 @@ const {
             </div>
             <div class="flex gap-3">
                 <button
-                    @click="previewMode = !previewMode"
                     class="flex items-center gap-2 px-4 py-2.5 bg-white border border-gray-200 hover:bg-gray-55 text-gray-700 font-bold text-xs rounded-xl shadow-xs transition-all cursor-pointer"
+                    @click="previewMode = !previewMode"
                 >
                     <Eye class="w-4 h-4" />
                     {{ previewMode ? "Mode Edit" : "Pratinjau" }}
                 </button>
                 <button
-                    @click="saveNews"
                     :disabled="saving"
                     class="flex items-center gap-2 px-5 py-2.5 bg-[#0B4A3F] hover:bg-[#0E5C4E] text-white font-bold text-xs rounded-xl shadow-md transition-all cursor-pointer disabled:bg-gray-400"
+                    @click="saveNews"
                 >
                     <Save class="w-4 h-4" />
                     {{ saving ? "Menyimpan..." : "Simpan Berita" }}
@@ -74,7 +74,7 @@ const {
                             'https://images.unsplash.com/photo-1506784983877-45594efa4cbe?q=80&w=800'
                         "
                         class="w-full aspect-video object-cover rounded-2xl bg-gray-100"
-                    />
+                    >
                     <h1
                         class="text-2xl font-extrabold text-gray-805 leading-snug"
                     >
@@ -93,10 +93,12 @@ const {
                     <div
                         class="prose prose-teal max-w-none text-gray-600 text-sm leading-relaxed"
                         v-html="
-                            form.content ||
-                            '<p>Konten artikel akan tampil di sini...</p>'
+                            sanitizeHtml(
+                                form.content ||
+                                    '<p>Konten artikel akan tampil di sini...</p>'
+                            )
                         "
-                    ></div>
+                    />
                 </div>
 
                 <!-- Editor Mode -->
@@ -113,11 +115,11 @@ const {
                         <input
                             v-model="form.title"
                             type="text"
-                            @input="generateSlug"
                             required
                             placeholder="Contoh: Penerimaan Santri Baru Gelombang 2"
                             class="w-full px-4 py-2.5 rounded-xl border border-gray-200 text-sm focus:outline-none focus:ring-2 focus:ring-teal-500"
-                        />
+                            @input="generateSlug"
+                        >
                     </div>
 
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -133,7 +135,7 @@ const {
                                 required
                                 placeholder="penerimaan-santri-baru-gel-2"
                                 class="w-full px-4 py-2.5 rounded-xl border border-gray-200 text-sm focus:outline-none focus:ring-2 focus:ring-teal-500"
-                            />
+                            >
                         </div>
                         <div class="space-y-1">
                             <label
@@ -164,7 +166,7 @@ const {
                             rows="2"
                             placeholder="Berikan rangkuman singkat dari berita ini..."
                             class="w-full px-4 py-2.5 rounded-xl border border-gray-200 text-sm focus:outline-none focus:ring-2 focus:ring-teal-500 resize-none"
-                        ></textarea>
+                        />
                     </div>
 
                     <!-- HTML content editor -->
@@ -178,30 +180,30 @@ const {
                             <div class="flex gap-2">
                                 <button
                                     type="button"
+                                    class="px-2.5 py-1 bg-gray-100 text-gray-700 text-[10px] font-bold rounded-lg hover:bg-gray-200 cursor-pointer"
                                     @click="
                                         form.content += '<h3>Sub Judul</h3>'
                                     "
-                                    class="px-2.5 py-1 bg-gray-100 text-gray-700 text-[10px] font-bold rounded-lg hover:bg-gray-200 cursor-pointer"
                                 >
                                     H3
                                 </button>
                                 <button
                                     type="button"
+                                    class="px-2.5 py-1 bg-gray-100 text-gray-700 text-[10px] font-bold rounded-lg hover:bg-gray-200 cursor-pointer"
                                     @click="
                                         form.content +=
                                             '<p>Paragraf baru...</p>'
                                     "
-                                    class="px-2.5 py-1 bg-gray-100 text-gray-700 text-[10px] font-bold rounded-lg hover:bg-gray-200 cursor-pointer"
                                 >
                                     P
                                 </button>
                                 <button
                                     type="button"
+                                    class="px-2.5 py-1 bg-gray-100 text-gray-700 text-[10px] font-bold rounded-lg hover:bg-gray-200 cursor-pointer"
                                     @click="
                                         form.content +=
                                             '<strong>Teks Tebal</strong>'
                                     "
-                                    class="px-2.5 py-1 bg-gray-100 text-gray-700 text-[10px] font-bold rounded-lg hover:bg-gray-200 cursor-pointer"
                                 >
                                     B
                                 </button>
@@ -212,7 +214,7 @@ const {
                             rows="12"
                             placeholder="Tulis artikel lengkap di sini..."
                             class="w-full px-4 py-3 rounded-xl border border-gray-200 text-sm focus:outline-none focus:ring-2 focus:ring-teal-500 font-mono"
-                        ></textarea>
+                        />
                     </div>
                 </div>
             </div>
@@ -235,7 +237,7 @@ const {
                                 type="radio"
                                 value="DRAFT"
                                 class="text-teal-600 focus:ring-teal-500 w-4 h-4"
-                            />
+                            >
                             <div class="text-sm font-semibold text-gray-700">
                                 Draf (Simpan Saja)
                             </div>
@@ -246,7 +248,7 @@ const {
                                 type="radio"
                                 value="PUBLISHED"
                                 class="text-teal-600 focus:ring-teal-500 w-4 h-4"
-                            />
+                            >
                             <div class="text-sm font-semibold text-gray-700">
                                 Terbitkan Langsung
                             </div>
@@ -275,7 +277,7 @@ const {
                                 type="text"
                                 placeholder="https://example.com/image.jpg"
                                 class="w-full px-3 py-2 rounded-xl border border-gray-200 text-xs focus:outline-none focus:ring-2 focus:ring-teal-500"
-                            />
+                            >
                         </div>
                         <div class="space-y-2">
                             <label
@@ -293,7 +295,7 @@ const {
                                     class="hidden"
                                     accept="image/*"
                                     @change="handleUpload"
-                                />
+                                >
                             </label>
                         </div>
                         <div
@@ -305,7 +307,7 @@ const {
                                     'https://images.unsplash.com/photo-1506784983877-45594efa4cbe?q=80&w=800'
                                 "
                                 class="w-full h-full object-cover"
-                            />
+                            >
                         </div>
                     </div>
                 </div>

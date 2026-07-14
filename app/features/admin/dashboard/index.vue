@@ -94,11 +94,7 @@ const { data: stats } = await useStatsApi().getStats();
                             </h4>
                             <p class="text-xs text-gray-400 mt-1">
                                 {{ news.category }} •
-                                {{
-                                    new Date(news.createdAt).toLocaleDateString(
-                                        "id-ID",
-                                    )
-                                }}
+                                {{ formatDateId(news.createdAt) }}
                             </p>
                         </div>
                         <div
@@ -172,11 +168,7 @@ const { data: stats } = await useStatsApi().getStats();
                         <span
                             class="text-[10px] text-gray-400 shrink-0 font-medium mt-1"
                         >
-                            {{
-                                new Date(msg.createdAt).toLocaleDateString(
-                                    "id-ID",
-                                )
-                            }}
+                            {{ formatDateId(msg.createdAt) }}
                         </span>
                     </div>
                 </div>

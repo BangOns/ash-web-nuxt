@@ -38,24 +38,24 @@ const {
         <!-- Tabs Header -->
         <div class="flex border-b border-gray-200 gap-4">
             <button
-                @click="activeTab = 'announcements'"
                 :class="[
                     'px-6 py-3 font-bold text-sm border-b-2 transition-all cursor-pointer',
                     activeTab === 'announcements'
                         ? 'border-teal-600 text-teal-600'
                         : 'border-transparent text-gray-500 hover:text-gray-700',
                 ]"
+                @click="activeTab = 'announcements'"
             >
                 Pengumuman
             </button>
             <button
-                @click="activeTab = 'agenda'"
                 :class="[
                     'px-6 py-3 font-bold text-sm border-b-2 transition-all cursor-pointer',
                     activeTab === 'agenda'
                         ? 'border-teal-600 text-teal-600'
                         : 'border-transparent text-gray-500 hover:text-gray-700',
                 ]"
+                @click="activeTab = 'agenda'"
             >
                 Agenda Kegiatan
             </button>
@@ -75,8 +75,8 @@ const {
                             Daftar Pengumuman
                         </h3>
                         <button
-                            @click="openAddAnn"
                             class="flex items-center gap-2 px-4 py-2 bg-[#0B4A3F] hover:bg-[#0E5C4E] text-white font-bold text-xs rounded-xl shadow-sm transition-all cursor-pointer font-sans"
+                            @click="openAddAnn"
                         >
                             <Plus class="w-4 h-4" /> Tambah Pengumuman
                         </button>
@@ -114,14 +114,14 @@ const {
                             </div>
                             <div class="flex gap-2 shrink-0">
                                 <button
-                                    @click="openEditAnn(ann)"
                                     class="p-2 text-teal-600 hover:bg-teal-50 rounded-lg transition-colors cursor-pointer"
+                                    @click="openEditAnn(ann)"
                                 >
                                     <Edit2 class="w-4 h-4" />
                                 </button>
                                 <button
-                                    @click="deleteAnn(ann.id)"
                                     class="p-2 text-red-600 hover:bg-red-50 rounded-lg transition-colors cursor-pointer"
+                                    @click="deleteAnn(ann.id)"
                                 >
                                     <Trash2 class="w-4 h-4" />
                                 </button>
@@ -143,8 +143,8 @@ const {
                             Agenda Mendatang
                         </h3>
                         <button
-                            @click="openAddAgenda"
                             class="flex items-center gap-2 px-4 py-2 bg-[#0B4A3F] hover:bg-[#0E5C4E] text-white font-bold text-xs rounded-xl shadow-sm transition-all cursor-pointer font-sans"
+                            @click="openAddAgenda"
                         >
                             <Plus class="w-4 h-4" /> Tambah Agenda
                         </button>
@@ -196,14 +196,14 @@ const {
                                 class="flex gap-2 border-t border-gray-200/50 mt-4 pt-3 justify-end"
                             >
                                 <button
-                                    @click="openEditAgenda(agenda)"
                                     class="p-2 text-teal-600 hover:bg-teal-50 rounded-lg transition-colors cursor-pointer"
+                                    @click="openEditAgenda(agenda)"
                                 >
                                     <Edit2 class="w-4 h-4" />
                                 </button>
                                 <button
-                                    @click="deleteAgenda(agenda.id)"
                                     class="p-2 text-red-600 hover:bg-red-50 rounded-lg transition-colors cursor-pointer"
+                                    @click="deleteAgenda(agenda.id)"
                                 >
                                     <Trash2 class="w-4 h-4" />
                                 </button>
@@ -240,7 +240,7 @@ const {
                             v-model="annForm.title"
                             type="text"
                             class="w-full px-4 py-2.5 rounded-xl border border-gray-200 text-sm focus:outline-none focus:ring-2 focus:ring-teal-500"
-                        />
+                        >
                     </div>
                     <div class="space-y-1">
                         <label class="text-xs font-bold text-gray-500 uppercase"
@@ -250,21 +250,21 @@ const {
                             v-model="annForm.description"
                             rows="5"
                             class="w-full px-4 py-2.5 rounded-xl border border-gray-200 text-sm focus:outline-none focus:ring-2 focus:ring-teal-500 resize-none"
-                        ></textarea>
+                        />
                     </div>
                 </div>
                 <div
                     class="flex justify-end gap-3 border-t border-gray-100 pt-4"
                 >
                     <button
-                        @click="showAnnModal = false"
                         class="px-4 py-2 text-gray-500 hover:bg-gray-55/70 rounded-xl text-xs font-semibold cursor-pointer"
+                        @click="showAnnModal = false"
                     >
                         Batal
                     </button>
                     <button
-                        @click="saveAnn"
                         class="px-5 py-2.5 bg-[#0B4A3F] hover:bg-[#0E5C4E] text-white font-bold rounded-xl text-xs shadow-sm cursor-pointer"
+                        @click="saveAnn"
                     >
                         Simpan
                     </button>
@@ -299,7 +299,7 @@ const {
                             v-model="agendaForm.title"
                             type="text"
                             class="w-full px-4 py-2.5 rounded-xl border border-gray-200 text-sm focus:outline-none focus:ring-2 focus:ring-teal-500"
-                        />
+                        >
                     </div>
                     <div class="space-y-1">
                         <label class="text-xs font-bold text-gray-500 uppercase"
@@ -309,7 +309,7 @@ const {
                             v-model="agendaForm.description"
                             rows="3"
                             class="w-full px-4 py-2.5 rounded-xl border border-gray-200 text-sm focus:outline-none focus:ring-2 focus:ring-teal-500 resize-none"
-                        ></textarea>
+                        />
                     </div>
                     <div class="grid grid-cols-2 gap-4">
                         <div class="space-y-1">
@@ -321,7 +321,7 @@ const {
                                 v-model="agendaForm.location"
                                 type="text"
                                 class="w-full px-4 py-2.5 rounded-xl border border-gray-200 text-sm focus:outline-none focus:ring-2 focus:ring-teal-500"
-                            />
+                            >
                         </div>
                         <div class="space-y-1">
                             <label
@@ -333,7 +333,7 @@ const {
                                 type="text"
                                 class="w-full px-4 py-2.5 rounded-xl border border-gray-200 text-sm focus:outline-none focus:ring-2 focus:ring-teal-500"
                                 placeholder="Misal: 08:00 - Selesai"
-                            />
+                            >
                         </div>
                     </div>
                     <div class="grid grid-cols-2 gap-4">
@@ -346,7 +346,7 @@ const {
                                 v-model="agendaForm.startDate"
                                 type="date"
                                 class="w-full px-4 py-2.5 rounded-xl border border-gray-200 text-sm focus:outline-none focus:ring-2 focus:ring-teal-500"
-                            />
+                            >
                         </div>
                         <div class="space-y-1">
                             <label
@@ -357,7 +357,7 @@ const {
                                 v-model="agendaForm.endDate"
                                 type="date"
                                 class="w-full px-4 py-2.5 rounded-xl border border-gray-200 text-sm focus:outline-none focus:ring-2 focus:ring-teal-500"
-                            />
+                            >
                         </div>
                     </div>
                 </div>
@@ -365,14 +365,14 @@ const {
                     class="flex justify-end gap-3 border-t border-gray-100 pt-4"
                 >
                     <button
-                        @click="showAgendaModal = false"
                         class="px-4 py-2 text-gray-500 hover:bg-gray-55/70 rounded-xl text-xs font-semibold cursor-pointer"
+                        @click="showAgendaModal = false"
                     >
                         Batal
                     </button>
                     <button
-                        @click="saveAgenda"
                         class="px-5 py-2.5 bg-[#0B4A3F] hover:bg-[#0E5C4E] text-white font-bold rounded-xl text-xs shadow-sm cursor-pointer"
+                        @click="saveAgenda"
                     >
                         Simpan
                     </button>

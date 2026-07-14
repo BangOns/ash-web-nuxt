@@ -11,7 +11,7 @@ export const useAdminNewsEditorManagement = async () => {
   // Mendapatkan query parameter 'id' berita untuk mendeteksi mode edit
   const newsId = route.query.id as string;
   const newsApi = useNewsApi();
-  const uploadApi = useUploadApi();
+  const { uploadFile } = useFileUpload();
 
   // State form isian artikel berita
   const form = ref({
@@ -75,13 +75,8 @@ export const useAdminNewsEditorManagement = async () => {
     const target = e.target as HTMLInputElement;
     if (!target.files?.length) return;
     const file = target.files[0];
-    if (!file) return;
-    try {
-      const res = await uploadApi.upload(file);
-      if (res?.url) form.value.thumbnail = res.url;
-    } catch (err) {
-      console.error("Upload gagal:", err);
-    }
+    const url = await uploadFile(file);
+    if (url) form.value.thumbnail = url;
   };
 
   /**

@@ -35,15 +35,6 @@ const activeTextColor = computed(() =>
     isSolid.value ? "text-[#12866B]" : "text-yellow-400",
 );
 
-const logoBg = computed(() =>
-    isSolid.value
-        ? "bg-linear-to-r from-teal-400 to-[#12866B]"
-        : "bg-[#B5E9D5]",
-);
-
-const logoText = computed(() =>
-    isSolid.value ? "text-white" : "text-[#0B4A3F]",
-);
 
 const handleScroll = () => {
     isScrolled.value = window.scrollY > 30;
@@ -71,7 +62,7 @@ onUnmounted(() => {
                         <div
                             class="w-10 h-10 rounded-xl flex items-center justify-center font-bold text-xl shadow-lg transition-colors"
                         >
-                            <img src="/assets/img/logo-ash.png" />
+                            <img src="/assets/img/logo-ash.png" >
                         </div>
                         <span
                             class="font-extrabold text-xl hidden sm:block tracking-wide uppercase transition-colors"
@@ -153,13 +144,13 @@ onUnmounted(() => {
 
                 <div class="lg:hidden flex items-center">
                     <button
-                        @click="isOpen = !isOpen"
                         class="inline-flex items-center justify-center p-2 rounded-md transition-colors"
                         :class="
                             isSolid
                                 ? 'text-[#0B4A3F] hover:bg-teal-50'
                                 : 'text-white hover:bg-white/10'
                         "
+                        @click="isOpen = !isOpen"
                     >
                         <span class="sr-only">Open main menu</span>
                         <X v-if="isOpen" class="block h-6 w-6" />
@@ -179,7 +170,7 @@ onUnmounted(() => {
         >
             <section class="px-4 py-6 space-y-4">
                 <section v-for="link in navLinks" :key="link.name">
-                    <section class="space-y-2" v-if="link.subLinks">
+                    <section v-if="link.subLinks" class="space-y-2">
                         <div
                             class="px-3 py-2 text-sm font-bold tracking-widest uppercase text-[#0B4A3F]"
                         >

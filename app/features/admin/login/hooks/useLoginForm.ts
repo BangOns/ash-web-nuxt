@@ -41,10 +41,11 @@ export const useLoginForm = () => {
           adminUser.value = res.data.user;
           await navigateTo("/admin");
         }
-      } catch (error: any) {
+      } catch (error: unknown) {
         // Menangkap error dari server (misalnya password salah)
+        const err = error as { data?: { statusMessage?: string } };
         errorMsg.value =
-          error.data?.statusMessage || "Email atau password salah";
+          err.data?.statusMessage || "Email atau password salah";
       } finally {
         loading.value = false;
       }

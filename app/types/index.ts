@@ -123,5 +123,5 @@ export interface DashboardStats {
 export interface StandardResponse<T = any> {
   message: string;
   data: T;
-  metadata?: any;
+  metadata?: Record<string, unknown>;
 }

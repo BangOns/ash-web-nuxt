@@ -8,10 +8,10 @@ const { features } = MockData;
 
 <template>
     <section class="relative z-30 mb-16 container mx-auto px-6 lg:px-12">
-        <hr class="w-full pb-10 border-teal-200" />
+        <hr class="w-full pb-10 border-teal-200" >
         <motion.div
             :initial="{ opacity: 0, y: 50 }"
-            :whileInView="{ opacity: 1, y: 0 }"
+            :while-in-view="{ opacity: 1, y: 0 }"
             :viewport="{ once: true, margin: '-50px' }"
             :transition="{ duration: 0.8 }"
             class="text-center mb-8"
@@ -26,14 +26,14 @@ const { features } = MockData;
         <motion.div
             class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"
             initial="hidden"
-            whileInView="visible"
+            while-in-view="visible"
             :viewport="{ once: true, margin: '-50px' }"
             :variants="staggerContainer"
         >
             <motion.div
                 v-for="feature in features"
                 :key="feature.title"
-                whileInView="visible"
+                while-in-view="visible"
                 :variants="fadeUp"
                 class="bg-white/90 backdrop-blur-md rounded-3xl p-8 shadow-xl shadow-teal-900/10 border border-white hover:-translate-y-2 transition-transform duration-500 text-center"
             >

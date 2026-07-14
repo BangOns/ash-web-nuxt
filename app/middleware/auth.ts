@@ -1,6 +1,6 @@
 import type { LoginResponse, StandardResponse } from "~/types";
 
-export default defineNuxtRouteMiddleware(async (to, from) => {
+export default defineNuxtRouteMiddleware(async (_to, _from) => {
   const user = useState<LoginResponse["user"] | null>("admin_user", () => null);
 
   if (user.value) return;
@@ -11,7 +11,7 @@ export default defineNuxtRouteMiddleware(async (to, from) => {
       headers,
     });
     user.value = res.data;
-  } catch (error) {
+  } catch {
     user.value = null;
     return navigateTo("/admin/login");
   }

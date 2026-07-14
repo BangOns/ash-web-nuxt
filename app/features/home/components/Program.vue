@@ -27,7 +27,7 @@ const getIcon = (iconName: string) => {
       >
         <motion.div
           initial="hidden"
-          whileInView="visible"
+          while-in-view="visible"
           :viewport="{ once: true }"
           :variants="staggerContainer"
         >
@@ -36,7 +36,7 @@ const getIcon = (iconName: string) => {
             class="text-4xl md:text-5xl font-extrabold text-[#0B4A3F] mb-4 uppercase tracking-tight"
           >
             Program
-            <br />
+            <br >
             Pendidikan
           </motion.h2>
           <motion.p
@@ -62,7 +62,7 @@ const getIcon = (iconName: string) => {
       <motion.div
         class="grid grid-cols-1 md:grid-cols-3 gap-8"
         initial="hidden"
-        whileInView="visible"
+        while-in-view="visible"
         :viewport="{ once: true, margin: '-50px' }"
         :variants="staggerContainer"
       >

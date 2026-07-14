@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { motion } from "motion-v";
-import { Bell, FileText } from "@lucide/vue";
+import { FileText } from "@lucide/vue";
 import { useAnnouncementsManagement } from "./hooks/useAnnouncementsManagement";
 
 const { announcements, formatDate } = await useAnnouncementsManagement();

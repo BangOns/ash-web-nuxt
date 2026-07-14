@@ -1,4 +1,5 @@
 import { ref } from "vue";
+import type { Program, Testimonial } from "~/types";
 
 /**
  * Hook untuk mengelola state dan logika Landing Page CMS (Hero, Program Pendidikan, & Testimoni)
@@ -7,7 +8,7 @@ export const useAdminLandingManagement = async () => {
   const heroApi = useHeroApi();
   const programsApi = useProgramsApi();
   const testimonialsApi = useTestimonialsApi();
-  const uploadApi = useUploadApi();
+  const { uploadFile } = useFileUpload();
 
   // ==========================================
   // STATE & LOGIKA HERO SECTION
@@ -45,13 +46,8 @@ export const useAdminLandingManagement = async () => {
     const target = e.target as HTMLInputElement;
     if (!target.files?.length) return;
     const file = target.files[0];
-    try {
-      if (!file) return;
-      const res = await uploadApi.upload(file);
-      if (hero.value && res?.url) hero.value.bgImage = res.url;
-    } catch (err) {
-      console.error("Upload gagal:", err);
-    }
+    const url = await uploadFile(file);
+    if (hero.value && url) hero.value.bgImage = url;
   };
 
   // ==========================================
@@ -62,7 +58,7 @@ export const useAdminLandingManagement = async () => {
   const { data: programs, refresh: refreshPrograms } =
     await programsApi.getPrograms();
   const showProgramModal = ref(false);
-  const editingProgram = ref<any>(null);
+  const editingProgram = ref<Program | null>(null);
   const programForm = ref({
     id: "",
     title: "",
@@ -90,7 +86,7 @@ export const useAdminLandingManagement = async () => {
    * Membuka modal edit program yang dipilih
    * @param prog Objek program
    */
-  const openEditProgram = (prog: any) => {
+  const openEditProgram = (prog: Program) => {
     editingProgram.value = prog;
     programForm.value = { ...prog };
     showProgramModal.value = true;
@@ -135,7 +131,7 @@ export const useAdminLandingManagement = async () => {
   const { data: testimonials, refresh: refreshTestimonials } =
     await testimonialsApi.getTestimonials();
   const showTestiModal = ref(false);
-  const editingTesti = ref<any>(null);
+  const editingTesti = ref<Testimonial | null>(null);
   const testiForm = ref({
     id: "",
     name: "",
@@ -164,7 +160,7 @@ export const useAdminLandingManagement = async () => {
    * Membuka modal edit testimoni yang dipilih
    * @param testi Objek testimoni
    */
-  const openEditTesti = (testi: any) => {
+  const openEditTesti = (testi: Testimonial) => {
     editingTesti.value = testi;
     testiForm.value = { ...testi };
     showTestiModal.value = true;
@@ -177,13 +173,8 @@ export const useAdminLandingManagement = async () => {
     const target = e.target as HTMLInputElement;
     if (!target.files?.length) return;
     const file = target.files[0];
-    try {
-      if (!file) return;
-      const res = await uploadApi.upload(file);
-      if (res?.url) testiForm.value.photo = res.url;
-    } catch (err) {
-      console.error("Upload gagal:", err);
-    }
+    const url = await uploadFile(file);
+    if (url) testiForm.value.photo = url;
   };
 
   /**

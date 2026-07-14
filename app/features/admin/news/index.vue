@@ -56,7 +56,7 @@ const { newsList, deleteNews } = await useAdminNewsManagement();
                 <img
                   :src="news.thumbnail"
                   class="w-16 h-12 rounded-lg object-cover bg-gray-100 border border-gray-200"
-                />
+                >
                 <div class="min-w-0">
                   <h4 class="font-bold text-gray-800 truncate max-w-[280px]">
                     {{ news.title }}
@@ -108,8 +108,8 @@ const { newsList, deleteNews } = await useAdminNewsManagement();
                     <Edit2 class="w-4 h-4" />
                   </NuxtLink>
                   <button
-                    @click="deleteNews(news.id)"
                     class="p-2 text-red-600 hover:bg-red-50 rounded-lg transition-colors cursor-pointer"
+                    @click="deleteNews(news.id)"
                   >
                     <Trash2 class="w-4 h-4" />
                   </button>

@@ -32,7 +32,7 @@ const { form, submitted } = useYourVoiceForm();
       </p>
     </div>
 
-    <form v-else @submit.prevent="form.handleSubmit()" class="space-y-5">
+    <form v-else class="space-y-5" @submit.prevent="form.handleSubmit()">
       <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
         <FormInput
           name="name"

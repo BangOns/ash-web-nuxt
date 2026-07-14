@@ -26,7 +26,7 @@ const { form, loading, errorMsg } = useLoginForm();
                 </p>
             </div>
 
-            <form @submit.prevent="form.handleSubmit()" class="space-y-6">
+            <form class="space-y-6" @submit.prevent="form.handleSubmit()">
                 <div
                     v-if="errorMsg"
                     class="bg-red-50 text-red-700 text-sm p-4 rounded-xl border border-red-150 text-center font-medium"

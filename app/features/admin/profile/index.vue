@@ -34,24 +34,24 @@ const {
     <!-- Tabs Header -->
     <div class="flex border-b border-gray-200 gap-4">
       <button
-        @click="activeTab = 'profile'"
         :class="[
           'px-6 py-3 font-bold text-sm border-b-2 transition-all cursor-pointer',
           activeTab === 'profile'
             ? 'border-teal-600 text-teal-600'
             : 'border-transparent text-gray-500 hover:text-gray-700',
         ]"
+        @click="activeTab = 'profile'"
       >
         Profil & Sambutan
       </button>
       <button
-        @click="activeTab = 'structure'"
         :class="[
           'px-6 py-3 font-bold text-sm border-b-2 transition-all cursor-pointer',
           activeTab === 'structure'
             ? 'border-teal-600 text-teal-600'
             : 'border-transparent text-gray-500 hover:text-gray-700',
         ]"
+        @click="activeTab = 'structure'"
       >
         Struktur Organisasi
       </button>
@@ -79,7 +79,7 @@ const {
               v-model="profile.sejarah"
               rows="5"
               class="w-full px-4 py-2.5 rounded-xl border border-gray-200 text-sm focus:ring-2 focus:ring-teal-500 focus:outline-none"
-            ></textarea>
+            />
           </div>
 
           <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -91,7 +91,7 @@ const {
                 v-model="profile.visi"
                 rows="4"
                 class="w-full px-4 py-2.5 rounded-xl border border-gray-200 text-sm focus:ring-2 focus:ring-teal-500 focus:outline-none"
-              ></textarea>
+              />
             </div>
             <div class="space-y-1">
               <label class="text-xs font-bold text-gray-500 uppercase"
@@ -101,7 +101,7 @@ const {
                 v-model="profile.misi"
                 rows="4"
                 class="w-full px-4 py-2.5 rounded-xl border border-gray-200 text-sm focus:ring-2 focus:ring-teal-500 focus:outline-none"
-              ></textarea>
+              />
             </div>
           </div>
 
@@ -113,7 +113,7 @@ const {
               v-model="profile.sambutan"
               rows="6"
               class="w-full px-4 py-2.5 rounded-xl border border-gray-200 text-sm focus:ring-2 focus:ring-teal-500 focus:outline-none"
-            ></textarea>
+            />
           </div>
         </div>
 
@@ -121,18 +121,18 @@ const {
           class="flex items-center justify-between border-t border-gray-100 pt-6"
         >
           <div
-            class="flex items-center gap-2 text-emerald-600 text-sm font-semibold"
             v-if="profileSaved"
+            class="flex items-center gap-2 text-emerald-600 text-sm font-semibold"
           >
             <Check class="w-5 h-5 bg-emerald-100 rounded-full p-1" />
             Perubahan profil berhasil disimpan!
           </div>
-          <div v-else></div>
+          <div v-else/>
 
           <button
-            @click="saveProfile"
             :disabled="profileLoading"
             class="flex items-center gap-2 px-6 py-3 bg-[#0B4A3F] hover:bg-[#0E5C4E] text-white font-bold rounded-xl text-sm transition-all shadow-md cursor-pointer disabled:bg-gray-400 font-sans"
+            @click="saveProfile"
           >
             <Save class="w-4 h-4" />
             Simpan Profil
@@ -150,8 +150,8 @@ const {
               Struktur Kepengurusan
             </h3>
             <button
-              @click="openAddMember"
               class="flex items-center gap-2 px-4 py-2 bg-[#0B4A3F] hover:bg-[#0E5C4E] text-white font-bold text-xs rounded-xl shadow-sm transition-all cursor-pointer font-sans"
+              @click="openAddMember"
             >
               <Plus class="w-4 h-4" /> Tambah Pengurus
             </button>
@@ -167,7 +167,7 @@ const {
                 <img
                   :src="member.photo"
                   class="w-16 h-16 rounded-xl object-cover bg-gray-200 shrink-0 shadow-sm border border-gray-200"
-                />
+                >
                 <div>
                   <h4 class="font-bold text-gray-800 text-sm leading-snug">
                     {{ member.name }}
@@ -184,14 +184,14 @@ const {
                 class="flex gap-2 border-t border-gray-200/50 mt-4 pt-3 justify-end"
               >
                 <button
-                  @click="openEditMember(member)"
                   class="p-2 text-teal-600 hover:bg-teal-50 rounded-lg transition-colors cursor-pointer"
+                  @click="openEditMember(member)"
                 >
                   <Edit2 class="w-4 h-4" />
                 </button>
                 <button
-                  @click="deleteMember(member.id)"
                   class="p-2 text-red-600 hover:bg-red-50 rounded-lg transition-colors cursor-pointer"
+                  @click="deleteMember(member.id)"
                 >
                   <Trash2 class="w-4 h-4" />
                 </button>
@@ -223,7 +223,7 @@ const {
               v-model="memberForm.name"
               type="text"
               class="w-full px-4 py-2.5 rounded-xl border border-gray-200 text-sm focus:outline-none focus:ring-2 focus:ring-teal-500"
-            />
+            >
           </div>
           <div class="space-y-1">
             <label class="text-xs font-bold text-gray-500 uppercase"
@@ -234,7 +234,7 @@ const {
               type="text"
               class="w-full px-4 py-2.5 rounded-xl border border-gray-200 text-sm focus:outline-none focus:ring-2 focus:ring-teal-500"
               placeholder="Contoh: Kepala Madrasah MA"
-            />
+            >
           </div>
           <div class="grid grid-cols-2 gap-4">
             <div class="space-y-1">
@@ -245,7 +245,7 @@ const {
                 v-model="memberForm.order"
                 type="number"
                 class="w-full px-4 py-2.5 rounded-xl border border-gray-200 text-sm focus:outline-none focus:ring-2 focus:ring-teal-500"
-              />
+              >
             </div>
             <div class="space-y-1">
               <label class="text-xs font-bold text-gray-500 uppercase"
@@ -255,7 +255,7 @@ const {
                 v-model="memberForm.photo"
                 type="text"
                 class="w-full px-4 py-2.5 rounded-xl border border-gray-200 text-sm focus:outline-none focus:ring-2 focus:ring-teal-500"
-              />
+              >
             </div>
           </div>
           <div class="space-y-2">
@@ -272,20 +272,20 @@ const {
                 class="hidden"
                 accept="image/*"
                 @change="handleMemberUpload"
-              />
+              >
             </label>
           </div>
         </div>
         <div class="flex justify-end gap-3 border-t border-gray-100 pt-4">
           <button
-            @click="showMemberModal = false"
             class="px-4 py-2 text-gray-500 hover:bg-gray-55/70 rounded-xl text-xs font-semibold cursor-pointer"
+            @click="showMemberModal = false"
           >
             Batal
           </button>
           <button
-            @click="saveMember"
             class="px-5 py-2.5 bg-[#0B4A3F] hover:bg-[#0E5C4E] text-white font-bold rounded-xl text-xs shadow-sm cursor-pointer"
+            @click="saveMember"
           >
             Simpan
           </button>

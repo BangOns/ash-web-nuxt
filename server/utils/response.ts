@@ -1,20 +1,21 @@
-import { H3Event, createError } from "h3";
+import type { H3Event } from "h3";
+import { createError } from "h3";
 
-export interface StandardResponse<T = any> {
+export interface StandardResponse<T = unknown> {
   message: string;
   data?: T;
-  metadata?: any;
+  metadata?: Record<string, unknown> | null;
 }
 
 /**
  * Send a standardized success response (Status 200, 201, etc.)
  */
-export const sendSuccess = <T = any>(
+export const sendSuccess = <T = unknown>(
   event: H3Event,
   message: string,
   data?: T,
-  metadata?: any,
-  statusCode = 200
+  metadata?: Record<string, unknown> | null,
+  statusCode = 200,
 ): StandardResponse<T> => {
   setResponseStatus(event, statusCode);
   return {
@@ -30,7 +31,7 @@ export const sendSuccess = <T = any>(
 export const sendErrorResponse = (
   statusCode: number,
   message: string,
-  data?: any
+  data?: unknown,
 ) => {
   return createError({
     statusCode,

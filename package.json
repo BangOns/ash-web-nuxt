@@ -7,10 +7,13 @@
     "dev": "nuxt dev -p 3002",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
-    "postinstall": "nuxt prepare"
+    "postinstall": "nuxt prepare",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix"
   },
   "dependencies": {
     "@lucide/vue": "^1.21.0",
+    "@nuxt/eslint": "^1.16.0",
     "@nuxt/image": "^2.0.0",
     "@nuxt/ui": "^4.8.2",
     "@nuxtjs/seo": "^5.3.0",
@@ -23,6 +26,8 @@
     "@tanstack/vue-form": "^1.33.1",
     "@tanstack/zod-form-adapter": "^0.42.1",
     "better-sqlite3": "^12.11.1",
+    "dotenv": "^16.4.5",
+    "eslint": "^10.7.0",
     "motion-v": "^2.3.0",
     "nuxt": "^4.4.8",
     "nuxt-swiper": "^2.0.2",
@@ -33,8 +38,7 @@
     "typescript": "^6.0.3",
     "vue": "^3.5.35",
     "vue-router": "^5.1.0",
-    "zod": "^3.24.1",
-    "dotenv": "^16.4.5"
+    "zod": "^3.24.1"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4.3.1",

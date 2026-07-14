@@ -35,8 +35,8 @@ const {
                 </p>
             </div>
             <button
-                @click="openAdd"
                 class="flex items-center gap-2 px-5 py-3 bg-[#0B4A3F] hover:bg-[#0E5C4E] text-white font-bold text-sm rounded-xl shadow-md transition-all cursor-pointer font-sans"
+                @click="openAdd"
             >
                 <Plus class="w-4 h-4" /> Unggah Media Baru
             </button>
@@ -45,35 +45,35 @@ const {
         <!-- Filters -->
         <div class="flex border-b border-gray-200 gap-4">
             <button
-                @click="filterType = 'ALL'"
                 :class="[
                     'px-6 py-3 font-bold text-sm border-b-2 transition-all cursor-pointer',
                     filterType === 'ALL'
                         ? 'border-teal-600 text-teal-600'
                         : 'border-transparent text-gray-500 hover:text-gray-700',
                 ]"
+                @click="filterType = 'ALL'"
             >
                 Semua Media
             </button>
             <button
-                @click="filterType = 'IMAGE'"
                 :class="[
                     'px-6 py-3 font-bold text-sm border-b-2 transition-all cursor-pointer',
                     filterType === 'IMAGE'
                         ? 'border-teal-600 text-teal-600'
                         : 'border-transparent text-gray-500 hover:text-gray-700',
                 ]"
+                @click="filterType = 'IMAGE'"
             >
                 Foto
             </button>
             <button
-                @click="filterType = 'VIDEO'"
                 :class="[
                     'px-6 py-3 font-bold text-sm border-b-2 transition-all cursor-pointer',
                     filterType === 'VIDEO'
                         ? 'border-teal-600 text-teal-600'
                         : 'border-transparent text-gray-500 hover:text-gray-700',
                 ]"
+                @click="filterType = 'VIDEO'"
             >
                 Video
             </button>
@@ -92,7 +92,7 @@ const {
                     <img
                         :src="item.thumbnail"
                         class="w-full h-full object-cover"
-                    />
+                    >
                     <div
                         class="absolute top-3 left-3 bg-black/60 backdrop-blur-xs text-white p-2 rounded-xl"
                     >
@@ -120,14 +120,14 @@ const {
                         class="flex gap-2 border-t border-gray-100 mt-4 pt-3 justify-end"
                     >
                         <button
-                            @click="openEdit(item)"
                             class="p-2 text-teal-600 hover:bg-teal-50 rounded-lg transition-colors cursor-pointer"
+                            @click="openEdit(item)"
                         >
                             <Edit2 class="w-4 h-4" />
                         </button>
                         <button
-                            @click="deleteItem(item.id)"
                             class="p-2 text-red-600 hover:bg-red-50 rounded-lg transition-colors cursor-pointer"
+                            @click="deleteItem(item.id)"
                         >
                             <Trash2 class="w-4 h-4" />
                         </button>
@@ -161,7 +161,7 @@ const {
                             v-model="form.title"
                             type="text"
                             class="w-full px-4 py-2.5 rounded-xl border border-gray-200 text-sm focus:outline-none focus:ring-2 focus:ring-teal-500"
-                        />
+                        >
                     </div>
                     <div class="space-y-1">
                         <label class="text-xs font-bold text-gray-500 uppercase"
@@ -171,7 +171,7 @@ const {
                             v-model="form.description"
                             rows="2"
                             class="w-full px-4 py-2.5 rounded-xl border border-gray-200 text-sm focus:outline-none focus:ring-2 focus:ring-teal-500 resize-none"
-                        ></textarea>
+                        />
                     </div>
                     <div class="space-y-1">
                         <label class="text-xs font-bold text-gray-500 uppercase"
@@ -200,7 +200,7 @@ const {
                             v-model="form.file"
                             type="text"
                             class="w-full px-4 py-2.5 rounded-xl border border-gray-200 text-sm focus:outline-none focus:ring-2 focus:ring-teal-500"
-                        />
+                        >
                     </div>
 
                     <div class="space-y-2">
@@ -217,7 +217,7 @@ const {
                                 type="file"
                                 class="hidden"
                                 @change="handleUpload($event, 'file')"
-                            />
+                            >
                         </label>
                     </div>
 
@@ -235,7 +235,7 @@ const {
                                 v-model="form.thumbnail"
                                 type="text"
                                 class="w-full px-4 py-2.5 rounded-xl border border-gray-200 text-sm focus:outline-none focus:ring-2 focus:ring-teal-500"
-                            />
+                            >
                         </div>
                         <div class="space-y-2">
                             <label
@@ -252,7 +252,7 @@ const {
                                     class="hidden"
                                     accept="image/*"
                                     @change="handleUpload($event, 'thumbnail')"
-                                />
+                                >
                             </label>
                         </div>
                     </div>
@@ -261,14 +261,14 @@ const {
                     class="flex justify-end gap-3 border-t border-gray-100 pt-4"
                 >
                     <button
-                        @click="showModal = false"
                         class="px-4 py-2 text-gray-500 hover:bg-gray-55/70 rounded-xl text-xs font-semibold cursor-pointer"
+                        @click="showModal = false"
                     >
                         Batal
                     </button>
                     <button
-                        @click="saveItem"
                         class="px-5 py-2.5 bg-[#0B4A3F] hover:bg-[#0E5C4E] text-white font-bold rounded-xl text-xs shadow-sm cursor-pointer"
+                        @click="saveItem"
                     >
                         Simpan
                     </button>

@@ -1,4 +1,5 @@
 import { ref } from "vue";
+import type { Announcement, Agenda } from "~/types";
 
 /**
  * Hook untuk mengelola state dan logika CMS Informasi (Pengumuman & Agenda Kegiatan)
@@ -19,7 +20,7 @@ export const useAdminInformationManagement = async () => {
   const showAnnModal = ref(false);
 
   // Menyimpan data pengumuman yang sedang diedit (null jika mode tambah)
-  const editingAnn = ref<any>(null);
+  const editingAnn = ref<Announcement | null>(null);
 
   // Form input data pengumuman
   const annForm = ref({
@@ -41,7 +42,7 @@ export const useAdminInformationManagement = async () => {
    * Membuka modal edit pengumuman yang dipilih
    * @param ann Objek pengumuman
    */
-  const openEditAnn = (ann: any) => {
+  const openEditAnn = (ann: Announcement) => {
     editingAnn.value = ann;
     annForm.value = { ...ann };
     showAnnModal.value = true;
@@ -90,7 +91,7 @@ export const useAdminInformationManagement = async () => {
   const showAgendaModal = ref(false);
 
   // Menyimpan data agenda yang sedang diedit (null jika mode tambah)
-  const editingAgenda = ref<any>(null);
+  const editingAgenda = ref<Agenda | null>(null);
 
   // Form input data agenda
   const agendaForm = ref({
@@ -124,12 +125,18 @@ export const useAdminInformationManagement = async () => {
    * Membuka modal edit agenda yang dipilih
    * @param agenda Objek agenda kegiatan
    */
-  const openEditAgenda = (agenda: any) => {
+  const safeDateString = (dateVal: string | Date | undefined | null) => {
+    if (!dateVal) return "";
+    const d = new Date(dateVal);
+    return isNaN(d.getTime()) ? "" : d.toISOString().split("T")[0];
+  };
+
+  const openEditAgenda = (agenda: Agenda) => {
     editingAgenda.value = agenda;
     agendaForm.value = {
       ...agenda,
-      startDate: new Date(agenda.startDate).toISOString().split("T")[0],
-      endDate: new Date(agenda.endDate).toISOString().split("T")[0],
+      startDate: safeDateString(agenda.startDate),
+      endDate: safeDateString(agenda.endDate),
     };
     showAgendaModal.value = true;
   };

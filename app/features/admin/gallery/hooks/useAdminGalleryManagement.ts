@@ -1,11 +1,12 @@
 import { ref } from "vue";
+import type { Gallery } from "~/types";
 
 /**
  * Hook untuk mengelola state dan logika halaman Galeri Foto/Video di panel Admin
  */
 export const useAdminGalleryManagement = async () => {
   const galleryApi = useGalleryApi();
-  const uploadApi = useUploadApi();
+  const { uploadFile } = useFileUpload();
 
   // Memuat data galeri secara real-time dari API
   const { data: galleryItems, refresh } = await galleryApi.getAdminGallery();
@@ -14,7 +15,7 @@ export const useAdminGalleryManagement = async () => {
   const showModal = ref(false);
 
   // Menyimpan data item galeri yang sedang diedit (null jika mode tambah)
-  const editingItem = ref<any>(null);
+  const editingItem = ref<Gallery | null>(null);
 
   // State form input data galeri
   const form = ref({
@@ -46,7 +47,7 @@ export const useAdminGalleryManagement = async () => {
    * Membuka modal untuk mengubah data media yang sudah ada
    * @param item Objek media galeri yang dipilih
    */
-  const openEdit = (item: any) => {
+  const openEdit = (item: Gallery) => {
     editingItem.value = item;
     form.value = { ...item };
     showModal.value = true;
@@ -61,22 +62,17 @@ export const useAdminGalleryManagement = async () => {
     const target = e.target as HTMLInputElement;
     if (!target.files?.length) return;
     const file = target.files[0];
-    try {
-      if (!file) return;
-      const res = await uploadApi.upload(file);
-      if (res?.url) {
-        if (field === "file") {
-          form.value.file = res.url;
-          // Jika jenis media adalah foto (IMAGE), samakan thumbnail dengan foto tersebut
-          if (form.value.type === "IMAGE") {
-            form.value.thumbnail = res.url;
-          }
-        } else {
-          form.value.thumbnail = res.url;
+    const url = await uploadFile(file);
+    if (url) {
+      if (field === "file") {
+        form.value.file = url;
+        // Jika jenis media adalah foto (IMAGE), samakan thumbnail dengan foto tersebut
+        if (form.value.type === "IMAGE") {
+          form.value.thumbnail = url;
         }
+      } else {
+        form.value.thumbnail = url;
       }
-    } catch (err) {
-      console.error("Upload gagal:", err);
     }
   };
 

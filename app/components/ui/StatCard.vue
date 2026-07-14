@@ -1,10 +1,11 @@
 <script setup lang="ts">
 import { computed } from "vue";
+import type { Component } from "vue";
 
 interface Props {
     title: string;
     value: number | string;
-    icon: any;
+    icon: Component;
     color?: "teal" | "blue" | "amber" | "purple" | "pink" | "emerald";
 }
 

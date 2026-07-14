@@ -62,7 +62,7 @@ const linkProfile = navLinks[1];
                         <path
                             fill="currentColor"
                             d="M0,160L80,149.3C160,139,320,117,480,128C640,139,800,181,960,181.3C1120,181,1280,139,1360,117.3L1440,96L1440,320L1360,320C1280,320,1120,320,960,320C800,320,640,320,480,320C320,320,160,320,80,320L0,320Z"
-                        ></path>
+                        />
                     </svg>
                 </div>
             </section>
@@ -99,8 +99,8 @@ const linkProfile = navLinks[1];
                                     ]"
                                 >
                                     <component
-                                        v-if="link.icon"
                                         :is="link.icon"
+                                        v-if="link.icon"
                                         :class="[
                                             'w-5 h-5 shrink-0',
                                             route.path === link.href

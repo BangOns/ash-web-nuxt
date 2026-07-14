@@ -1,4 +1,6 @@
 <template>
-    <h1>Ini Layout Template Home</h1>
-    <slot />
+    <div>
+        <h1>Ini Layout Template Home</h1>
+        <slot />
+    </div>
 </template>

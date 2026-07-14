@@ -34,7 +34,7 @@ const { data: members } = await useOrganisasiApi().getMembers();
               'https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=200'
             "
             class="w-24 h-24 rounded-full object-cover shadow-md border-2 border-primary-100 dark:border-primary-800 bg-gray-50"
-          />
+          >
           <div>
             <h4 class="font-bold text-lg text-primary-950 dark:text-white">
               {{ member.name }}

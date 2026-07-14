@@ -35,7 +35,7 @@ export function decryptSession(encryptedData: string): string | null {
     let decrypted = decipher.update(encrypted, "hex", "utf8");
     decrypted += decipher.final("utf8");
     return decrypted;
-  } catch (error) {
+  } catch {
     return null;
   }
 }

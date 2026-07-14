@@ -18,7 +18,7 @@ const { data: dbTestimonials } = await useTestimonialsApi().getTestimonials();
         <path
           fill="currentColor"
           d="M0,64L120,53.3C240,43,480,21,720,26.7C960,32,1200,64,1320,80L1440,96L1440,120L1320,120C1200,120,960,120,720,120C480,120,240,120,120,120L0,120Z"
-        ></path>
+        />
       </svg>
     </div>
 
@@ -40,7 +40,7 @@ const { data: dbTestimonials } = await useTestimonialsApi().getTestimonials();
                 :src="img.file"
                 class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500 opacity-90 group-hover:opacity-100"
                 :alt="img.title"
-              />
+              >
             </div>
             <div
               v-if="!dbGallery?.length"
@@ -85,7 +85,7 @@ const { data: dbTestimonials } = await useTestimonialsApi().getTestimonials();
                       v-if="t.photo"
                       :src="t.photo"
                       class="w-12 h-12 rounded-full object-cover bg-gray-100 border border-white/20 shadow-md"
-                    />
+                    >
                     <div
                       v-else
                       class="w-12 h-12 rounded-full bg-linear-to-r from-teal-400 to-[#12866B] flex items-center justify-center text-white font-bold text-lg shadow-md"
