@@ -1,33 +1,40 @@
 export default defineEventHandler(async (event) => {
   try {
-    const totalNews = await prisma.news.count();
-    const totalAnnouncements = await prisma.announcement.count();
-    const totalAgenda = await prisma.agenda.count();
-    const totalGallery = await prisma.gallery.count();
-    const totalMessages = await prisma.visitorMessage.count();
+    const [
+      totalNews,
+      totalAnnouncements,
+      totalAgenda,
+      totalGallery,
+      totalMessages,
+      viewsResult,
+      popularNews,
+      recentMessages,
+    ] = await Promise.all([
+      prisma.news.count(),
+      prisma.announcement.count(),
+      prisma.agenda.count(),
+      prisma.gallery.count(),
+      prisma.visitorMessage.count(),
+      prisma.news.aggregate({
+        _sum: {
+          totalViews: true,
+        },
+      }),
+      prisma.news.findMany({
+        orderBy: {
+          totalViews: "desc",
+        },
+        take: 5,
+      }),
+      prisma.visitorMessage.findMany({
+        orderBy: {
+          createdAt: "desc",
+        },
+        take: 5,
+      }),
+    ]);
 
-    const viewsResult = await prisma.news.aggregate({
-      _sum: {
-        totalViews: true,
-      },
-    });
     const totalViews = viewsResult._sum.totalViews || 0;
-
-    // Popular news
-    const popularNews = await prisma.news.findMany({
-      orderBy: {
-        totalViews: "desc",
-      },
-      take: 5,
-    });
-
-    // Recent messages
-    const recentMessages = await prisma.visitorMessage.findMany({
-      orderBy: {
-        createdAt: "desc",
-      },
-      take: 5,
-    });
 
     const stats = {
       totalNews,

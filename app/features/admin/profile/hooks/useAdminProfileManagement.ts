@@ -9,13 +9,19 @@ export const useAdminProfileManagement = async () => {
   const organisasiApi = useOrganisasiApi();
   const { uploadFile } = useFileUpload();
 
+  // Memuat data profil & kepengurusan secara paralel
+  const [profileRes, membersRes] = await Promise.all([
+    profileApi.getProfile(),
+    organisasiApi.getMembers(),
+  ]);
+
+  const { data: profile, refresh: refreshProfile } = profileRes;
+  const { data: members, refresh: refreshMembers } = membersRes;
+
   // ==========================================
   // STATE & LOGIKA PROFIL (SEJARAH, VISI, MISI)
   // ==========================================
 
-  // Memuat data profil pesantren dari database
-  const { data: profile, refresh: refreshProfile } =
-    await profileApi.getProfile();
   const profileLoading = ref(false);
   const profileSaved = ref(false);
 
@@ -43,9 +49,7 @@ export const useAdminProfileManagement = async () => {
   // STATE & LOGIKA STRUKTUR KEPENGURUSAN
   // ==========================================
 
-  // Memuat seluruh daftar anggota organisasi
-  const { data: members, refresh: refreshMembers } =
-    await organisasiApi.getMembers();
+
   const showMemberModal = ref(false);
   const editingMember = ref<Organization | null>(null);
   const memberForm = ref({

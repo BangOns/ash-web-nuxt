@@ -1,8 +1,13 @@
 <script setup lang="ts">
 import { Quote } from "@lucide/vue";
 
-const { data: dbGallery } = await useGalleryApi().getGallery("IMAGE");
-const { data: dbTestimonials } = await useTestimonialsApi().getTestimonials();
+const [galleryRes, testimonialsRes] = await Promise.all([
+  useGalleryApi().getGallery("IMAGE"),
+  useTestimonialsApi().getTestimonials(),
+]);
+
+const { data: dbGallery } = galleryRes;
+const { data: dbTestimonials } = testimonialsRes;
 </script>
 
 <template>

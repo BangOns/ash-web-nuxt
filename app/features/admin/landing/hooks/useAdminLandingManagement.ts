@@ -10,12 +10,21 @@ export const useAdminLandingManagement = async () => {
   const testimonialsApi = useTestimonialsApi();
   const { uploadFile } = useFileUpload();
 
+  // Memuat seluruh data landing page secara paralel
+  const [heroRes, programsRes, testimonialsRes] = await Promise.all([
+    heroApi.getHero(),
+    programsApi.getPrograms(),
+    testimonialsApi.getTestimonials(),
+  ]);
+
+  const { data: hero, refresh: refreshHero } = heroRes;
+  const { data: programs, refresh: refreshPrograms } = programsRes;
+  const { data: testimonials, refresh: refreshTestimonials } = testimonialsRes;
+
   // ==========================================
   // STATE & LOGIKA HERO SECTION
   // ==========================================
 
-  // Memuat data pengaturan hero banner utama
-  const { data: hero, refresh: refreshHero } = await heroApi.getHero();
   const heroLoading = ref(false);
   const heroSaved = ref(false);
 
@@ -54,9 +63,7 @@ export const useAdminLandingManagement = async () => {
   // STATE & LOGIKA PROGRAM PENDIDIKAN
   // ==========================================
 
-  // Memuat daftar program pendidikan
-  const { data: programs, refresh: refreshPrograms } =
-    await programsApi.getPrograms();
+
   const showProgramModal = ref(false);
   const editingProgram = ref<Program | null>(null);
   const programForm = ref({
@@ -127,9 +134,7 @@ export const useAdminLandingManagement = async () => {
   // STATE & LOGIKA TESTIMONI
   // ==========================================
 
-  // Memuat data testimoni
-  const { data: testimonials, refresh: refreshTestimonials } =
-    await testimonialsApi.getTestimonials();
+
   const showTestiModal = ref(false);
   const editingTesti = ref<Testimonial | null>(null);
   const testiForm = ref({

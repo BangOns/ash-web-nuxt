@@ -8,13 +8,18 @@ export const useAdminInformationManagement = async () => {
   const annApi = useAnnouncementsApi();
   const agendaApi = useAgendaApi();
 
+  // Memuat data pengumuman & agenda secara paralel
+  const [annRes, agendaRes] = await Promise.all([
+    annApi.getAdminAnnouncements(),
+    agendaApi.getAdminAgenda(),
+  ]);
+
+  const { data: announcements, refresh: refreshAnnouncements } = annRes;
+  const { data: agendaList, refresh: refreshAgenda } = agendaRes;
+
   // ==========================================
   // STATE & LOGIKA PENGUMUMAN (ANNOUNCEMENTS)
   // ==========================================
-
-  // Memuat data pengumuman secara real-time dari API
-  const { data: announcements, refresh: refreshAnnouncements } =
-    await annApi.getAdminAnnouncements();
 
   // State modal pengumuman
   const showAnnModal = ref(false);
@@ -83,9 +88,7 @@ export const useAdminInformationManagement = async () => {
   // STATE & LOGIKA AGENDA KEGIATAN (AGENDAS)
   // ==========================================
 
-  // Memuat data agenda kegiatan dari API
-  const { data: agendaList, refresh: refreshAgenda } =
-    await agendaApi.getAdminAgenda();
+
 
   // State modal agenda
   const showAgendaModal = ref(false);
