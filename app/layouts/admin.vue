@@ -222,7 +222,7 @@ const logout = async () => {
                         target="_blank"
                         class="text-sm font-semibold text-teal-600 hover:text-teal-700 bg-teal-50 px-4 py-2 rounded-xl transition-all"
                     >
-                        Lihat Website
+                        Halaman Keuangan
                     </NuxtLink>
                 </div>
             </header>
