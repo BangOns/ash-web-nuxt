@@ -58,41 +58,44 @@ const handleSubmit = () => {
     <div class="space-y-8">
         <div>
             <h2
-                class="text-2xl font-bold text-primary-950 dark:text-white border-b border-primary-100 dark:border-primary-800 pb-4 mb-6"
+                class="text-2xl font-bold text-primary-950 border-b border-primary-100 pb-4 mb-6"
             >
                 Buku Tamu Pengunjung
             </h2>
 
             <!-- Form Add Entry -->
             <div
-                class="bg-primary-50 dark:bg-primary-900/30 p-6 rounded-2xl border border-primary-100 dark:border-primary-800 mb-10"
+                class="bg-primary-50 dark:bg-primary-900 p-6 rounded-2xl border border-primary-100 dark:border-primary-800 mb-10"
             >
                 <h3
                     class="font-bold text-primary-900 dark:text-white mb-4 text-sm"
                 >
                     Isi Buku Tamu
                 </h3>
-                <form class="flex flex-col sm:flex-row gap-3" @submit.prevent="handleSubmit">
+                <form
+                    class="flex flex-col sm:flex-row gap-3"
+                    @submit.prevent="handleSubmit"
+                >
                     <input
                         v-model="inputName"
                         type="text"
                         placeholder="Nama Anda"
                         required
-                        class="w-full sm:w-1/3 px-4 py-2.5 rounded-xl border border-white dark:border-primary-800 focus:outline-none focus:ring-2 focus:ring-primary-500 bg-white dark:bg-primary-950 text-sm shadow-sm"
-                    >
+                        class="w-full sm:w-1/3 px-4 py-2.5 rounded-xl border border-white focus:outline-none focus:ring-2 focus:ring-primary-500 bg-white text-sm shadow-sm"
+                    />
                     <input
                         v-model="inputAs"
                         type="text"
                         placeholder="Asal/Instansi"
-                        class="w-full sm:w-1/3 px-4 py-2.5 rounded-xl border border-white dark:border-primary-800 focus:outline-none focus:ring-2 focus:ring-primary-500 bg-white dark:bg-primary-950 text-sm shadow-sm"
-                    >
+                        class="w-full sm:w-1/3 px-4 py-2.5 rounded-xl border border-white dark:border-primary-800 focus:outline-none focus:ring-2 focus:ring-primary-500 bg-white text-sm shadow-sm"
+                    />
                     <input
                         v-model="inputMsg"
                         type="text"
                         placeholder="Pesan singkat..."
                         required
-                        class="w-full grow px-4 py-2.5 rounded-xl border border-white dark:border-primary-800 focus:outline-none focus:ring-2 focus:ring-primary-500 bg-white dark:bg-primary-950 text-sm shadow-sm"
-                    >
+                        class="w-full grow px-4 py-2.5 rounded-xl border border-white dark:border-primary-800 focus:outline-none focus:ring-2 focus:ring-primary-500 bg-white text-sm shadow-sm"
+                    />
                     <button
                         type="submit"
                         class="bg-primary-600 hover:bg-primary-500 text-white px-6 py-2.5 rounded-xl font-semibold shadow-md text-sm transition-colors whitespace-nowrap cursor-pointer"
@@ -115,7 +118,7 @@ const handleSubmit = () => {
                     :initial="{ opacity: 0, y: 10 }"
                     :animate="{ opacity: 1, y: 0 }"
                     :transition="{ delay: idx * 0.1 }"
-                    class="p-5 bg-white dark:bg-primary-900/50 rounded-2xl border border-primary-100 dark:border-primary-800 flex gap-4"
+                    class="p-5 bg-white dark:bg-primary-900 rounded-2xl border border-primary-100 dark:border-primary-800 flex gap-4"
                 >
                     <div
                         class="w-10 h-10 rounded-full bg-primary-100 dark:bg-primary-800 flex items-center justify-center text-primary-600 dark:text-primary-300 shrink-0"

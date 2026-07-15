@@ -11,13 +11,11 @@ const { form, submitted } = useSurveyForm();
 <template>
     <div class="space-y-6">
         <h2
-            class="text-2xl font-bold text-primary-950 dark:text-white border-b border-primary-100 dark:border-primary-800 pb-4"
+            class="text-2xl font-bold text-primary-950 border-b border-primary-100 dark:border-primary-800 pb-4"
         >
             Survei Kepuasan Layanan
         </h2>
-        <p
-            class="text-gray-600 dark:text-gray-300 text-sm leading-relaxed mb-6"
-        >
+        <p class="text-gray-600 text-sm leading-relaxed mb-6">
             Mohon kesediaan Anda mengisi kuesioner singkat ini guna mengukur
             indeks kepuasan pelayanan administrasi dan pendidikan di Pondok
             Pesantren Ashhaburratib.
@@ -54,6 +52,7 @@ const { form, submitted } = useSurveyForm();
         <form v-else class="space-y-5" @submit.prevent="form.handleSubmit()">
             <FormInput
                 name="name"
+                class="text-black"
                 label="Nama Lengkap (Opsional)"
                 placeholder="Masukkan nama Anda..."
             />
@@ -69,8 +68,7 @@ const { form, submitted } = useSurveyForm();
             <!-- Satisfaction Radio Binding (TanStack Form custom binding) -->
             <component :is="form.Field" v-slot="{ field }" name="satisfaction">
                 <div class="space-y-2">
-                    <label
-                        class="block text-sm font-semibold text-gray-700 dark:text-gray-300"
+                    <label class="block text-sm font-semibold text-gray-700"
                         >Tingkat Kepuasan Pelayanan
                         <span class="text-red-500">*</span></label
                     >
@@ -87,7 +85,7 @@ const { form, submitted } = useSurveyForm();
                                 'flex items-center gap-2 cursor-pointer p-3 rounded-xl border transition-all select-none',
                                 field.state.value === rating
                                     ? 'border-[#0B4A3F] bg-teal-50/50 text-[#0B4A3F] dark:border-teal-550 dark:bg-teal-950/20'
-                                    : 'border-gray-200 dark:border-gray-800 hover:bg-gray-50 dark:hover:bg-gray-900',
+                                    : 'border-gray-200 dark:border-gray-800 hover:bg-gray-50',
                             ]"
                         >
                             <input
@@ -98,10 +96,9 @@ const { form, submitted } = useSurveyForm();
                                 class="w-4 h-4 text-[#0B4A3F] focus:ring-[#0B4A3F]"
                                 @change="field.handleChange(rating)"
                             />
-                            <span
-                                class="text-sm dark:text-gray-300 font-semibold"
-                                >{{ rating }}</span
-                            >
+                            <span class="text-sm font-semibold">{{
+                                rating
+                            }}</span>
                         </label>
                     </div>
                     <div

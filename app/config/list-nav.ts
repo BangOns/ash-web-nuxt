@@ -71,4 +71,5 @@ export const navLinks: NavLink[] = [
       },
     ],
   },
+  { name: "Donasi", href: "/donasi" },
 ];

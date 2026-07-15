@@ -8,7 +8,7 @@ export const useAdminLandingManagement = async () => {
   const heroApi = useHeroApi();
   const programsApi = useProgramsApi();
   const testimonialsApi = useTestimonialsApi();
-  const { uploadFile } = useFileUpload();
+  const { uploadFile } = useAppFileUpload();
 
   // Memuat seluruh data landing page secara paralel
   const [heroRes, programsRes, testimonialsRes] = await Promise.all([
@@ -55,6 +55,7 @@ export const useAdminLandingManagement = async () => {
     const target = e.target as HTMLInputElement;
     if (!target.files?.length) return;
     const file = target.files[0];
+    if (!file) return;
     const url = await uploadFile(file);
     if (hero.value && url) hero.value.bgImage = url;
   };
@@ -62,7 +63,6 @@ export const useAdminLandingManagement = async () => {
   // ==========================================
   // STATE & LOGIKA PROGRAM PENDIDIKAN
   // ==========================================
-
 
   const showProgramModal = ref(false);
   const editingProgram = ref<Program | null>(null);
@@ -134,7 +134,6 @@ export const useAdminLandingManagement = async () => {
   // STATE & LOGIKA TESTIMONI
   // ==========================================
 
-
   const showTestiModal = ref(false);
   const editingTesti = ref<Testimonial | null>(null);
   const testiForm = ref({
@@ -178,6 +177,7 @@ export const useAdminLandingManagement = async () => {
     const target = e.target as HTMLInputElement;
     if (!target.files?.length) return;
     const file = target.files[0];
+    if (!file) return;
     const url = await uploadFile(file);
     if (url) testiForm.value.photo = url;
   };

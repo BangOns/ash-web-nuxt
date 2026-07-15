@@ -11,6 +11,8 @@ import type {
   VisitorMessage,
   DashboardStats,
   StandardResponse,
+  DonationCampaign,
+  DonationHistory,
 } from "~/types";
 
 // 1. Hero Settings API
@@ -488,4 +490,87 @@ export const useUploadApi = () => {
     return res.data;
   };
   return { upload };
+};
+
+// 13. Donation Campaign API
+export const useDonationApi = () => {
+  const getCampaigns = () =>
+    useFetch<StandardResponse<DonationCampaign[]>, Error, string, any, any, DonationCampaign[]>(
+      "/api/donasi",
+      {
+        transform: (res) => res.data,
+      }
+    );
+
+  const getSingleCampaign = (slugOrId: string) =>
+    useFetch<StandardResponse<DonationCampaign>, Error, string, any, any, DonationCampaign>(
+      `/api/donasi/${slugOrId}`,
+      {
+        transform: (res) => res.data,
+      }
+    );
+
+  const getAdminCampaigns = () =>
+    useFetch<StandardResponse<DonationCampaign[]>, Error, string, any, any, DonationCampaign[]>(
+      "/api/admin/donasi",
+      {
+        transform: (res) => res.data,
+      }
+    );
+
+  const createCampaign = async (body: any) => {
+    const res = await $fetch<StandardResponse<DonationCampaign>>(
+      "/api/admin/donasi",
+      { method: "POST", body }
+    );
+    return res.data;
+  };
+
+  const updateCampaign = async (body: any) => {
+    const res = await $fetch<StandardResponse<DonationCampaign>>(
+      "/api/admin/donasi",
+      { method: "PUT", body }
+    );
+    return res.data;
+  };
+
+  const deleteCampaign = async (id: string) => {
+    const res = await $fetch<StandardResponse<DonationCampaign>>(
+      `/api/admin/donasi?id=${id}`,
+      { method: "DELETE" }
+    );
+    return res.data;
+  };
+
+  const getCampaignHistories = (campaignId: string) =>
+    useFetch<StandardResponse<DonationHistory[]>, Error, string, any, any, DonationHistory[]>(
+      `/api/admin/donasi/history?campaignId=${campaignId}`,
+      {
+        transform: (res) => res.data,
+      }
+    );
+
+  const updateNominal = async (body: {
+    campaignId: string;
+    amount: number;
+    type: "ADDITION" | "REDUCTION";
+    note: string;
+  }) => {
+    const res = await $fetch<StandardResponse<any>>(
+      "/api/admin/donasi/nominal",
+      { method: "POST", body }
+    );
+    return res.data;
+  };
+
+  return {
+    getCampaigns,
+    getSingleCampaign,
+    getAdminCampaigns,
+    createCampaign,
+    updateCampaign,
+    deleteCampaign,
+    getCampaignHistories,
+    updateNominal,
+  };
 };

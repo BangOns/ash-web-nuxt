@@ -9,6 +9,7 @@ import {
     Info,
     Image,
     Inbox,
+    Heart,
     LogOut,
     Menu,
     X,
@@ -27,6 +28,7 @@ const menuItems = [
     { name: "Berita & Kegiatan", href: "/admin/news", icon: FileText },
     { name: "Pengumuman & Agenda", href: "/admin/information", icon: Info },
     { name: "Galeri Foto & Video", href: "/admin/gallery", icon: Image },
+    { name: "Kelola Donasi", href: "/admin/donasi", icon: Heart },
     { name: "Pesan Masuk", href: "/admin/messages", icon: Inbox },
 ];
 
@@ -210,6 +212,13 @@ const logout = async () => {
                 <div class="flex items-center gap-4">
                     <NuxtLink
                         to="/"
+                        target="_blank"
+                        class="text-sm font-semibold text-teal-600 hover:text-teal-700 bg-teal-50 px-4 py-2 rounded-xl transition-all"
+                    >
+                        Lihat Website
+                    </NuxtLink>
+                    <NuxtLink
+                        to="https://finance.ashhaburratib.com/"
                         target="_blank"
                         class="text-sm font-semibold text-teal-600 hover:text-teal-700 bg-teal-50 px-4 py-2 rounded-xl transition-all"
                     >

@@ -7,7 +7,7 @@ import type { Organization } from "~/types";
 export const useAdminProfileManagement = async () => {
   const profileApi = useProfileApi();
   const organisasiApi = useOrganisasiApi();
-  const { uploadFile } = useFileUpload();
+  const { uploadFile } = useAppFileUpload();
 
   // Memuat data profil & kepengurusan secara paralel
   const [profileRes, membersRes] = await Promise.all([
@@ -93,6 +93,7 @@ export const useAdminProfileManagement = async () => {
     const target = e.target as HTMLInputElement;
     if (!target.files?.length) return;
     const file = target.files[0];
+    if (!file) return;
     const url = await uploadFile(file);
     if (url) memberForm.value.photo = url;
   };

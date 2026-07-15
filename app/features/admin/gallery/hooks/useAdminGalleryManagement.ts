@@ -6,7 +6,7 @@ import type { Gallery } from "~/types";
  */
 export const useAdminGalleryManagement = async () => {
   const galleryApi = useGalleryApi();
-  const { uploadFile } = useFileUpload();
+  const { uploadFile } = useAppFileUpload();
 
   // Memuat data galeri secara real-time dari API
   const { data: galleryItems, refresh } = await galleryApi.getAdminGallery();
@@ -62,6 +62,7 @@ export const useAdminGalleryManagement = async () => {
     const target = e.target as HTMLInputElement;
     if (!target.files?.length) return;
     const file = target.files[0];
+    if (!file) return;
     const url = await uploadFile(file);
     if (url) {
       if (field === "file") {

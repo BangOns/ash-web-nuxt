@@ -17,7 +17,7 @@ const emit = defineEmits<{
             :value="modelValue"
             :disabled="disabled"
             :class="[
-                'w-full appearance-none rounded-xl border border-gray-250 bg-white px-4 py-2.5 pr-10 text-sm transition-all outline-none focus:ring-2 focus:ring-[#0B4A3F]/20 focus:border-[#0B4A3F] disabled:pointer-events-none disabled:bg-gray-50 disabled:opacity-50 dark:bg-gray-900 dark:border-gray-800 dark:focus:ring-teal-500/20 dark:focus:border-teal-500',
+                'w-full appearance-none rounded-xl border border-gray-250 bg-white px-4 py-2.5 pr-10 text-sm transition-all outline-none focus:ring-2 focus:ring-[#0B4A3F]/20 focus:border-[#0B4A3F] disabled:pointer-events-none disabled:bg-gray-50 disabled:opacity-50',
                 $props.class,
             ]"
             @change="

@@ -7,6 +7,10 @@ useHead({
     }
   ]
 })
+
+// Force light mode globally to prevent dark mode/contrast issues
+const colorMode = useColorMode();
+colorMode.preference = 'light';
 </script>
 
 <template>

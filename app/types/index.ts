@@ -125,3 +125,30 @@ export interface StandardResponse<T = any> {
   data: T;
   metadata?: Record<string, unknown>;
 }
+
+export interface DonationCampaign {
+  id: string;
+  title: string;
+  slug: string;
+  banner: string;
+  description: string;
+  targetAmount: number;
+  collectedAmount: number;
+  whatsappNumber: string;
+  whatsappTemplate: string;
+  startDate: string;
+  endDate: string;
+  status: "DRAFT" | "PUBLISHED" | "CLOSED";
+  createdAt: string;
+  updatedAt: string;
+}
+
+export interface DonationHistory {
+  id: string;
+  campaignId: string;
+  amount: number;
+  type: "ADDITION" | "REDUCTION";
+  note: string;
+  createdBy: string;
+  createdAt: string;
+}

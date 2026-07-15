@@ -104,3 +104,32 @@ model ProfileSettings {
   misi     String
   sambutan String
 }
+
+model DonationCampaign {
+  id               String            @id @default(uuid())
+  title            String
+  slug             String            @unique
+  banner           String
+  description      String
+  targetAmount     Float
+  collectedAmount  Float             @default(0)
+  whatsappNumber   String
+  whatsappTemplate String
+  startDate        DateTime
+  endDate          DateTime
+  status           String            @default("DRAFT") // DRAFT, PUBLISHED, CLOSED
+  createdAt        DateTime          @default(now())
+  updatedAt        DateTime          @updatedAt
+  histories        DonationHistory[]
+}
+
+model DonationHistory {
+  id         String           @id @default(uuid())
+  campaignId String
+  campaign   DonationCampaign @relation(fields: [campaignId], references: [id], onDelete: Cascade)
+  amount     Float
+  type       String           // ADDITION, REDUCTION
+  note       String
+  createdBy  String
+  createdAt  DateTime         @default(now())
+}

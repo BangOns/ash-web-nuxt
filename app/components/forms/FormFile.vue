@@ -29,12 +29,13 @@ interface FieldContext {
 }
 
 const form = inject<FormContext | null>("formContext", null);
-const { uploadFile, uploading } = useFileUpload();
+const { uploadFile, uploading } = useAppFileUpload();
 
 const onFileChange = async (e: Event, field: FieldContext) => {
     const target = e.target as HTMLInputElement;
     if (!target.files?.length) return;
     const file = target.files[0];
+    if (!file) return;
     const url = await uploadFile(file);
     if (url && field) {
         field.handleChange(url);

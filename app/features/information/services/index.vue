@@ -34,7 +34,7 @@ const servicesData = [
             >
                 Layanan Administrasi
             </h2>
-            <p class="text-gray-600 dark:text-gray-300 mb-8 leading-relaxed">
+            <p class="text-gray-600 mb-8 leading-relaxed">
                 Pondok Pesantren Ashhaburratib menyediakan berbagai jenis
                 layanan administrasi untuk santri, wali santri, dan alumni demi
                 mempermudah birokrasi dan memenuhi kebutuhan dokumen resmi.
@@ -47,7 +47,7 @@ const servicesData = [
                     :initial="{ opacity: 0, scale: 0.95 }"
                     :animate="{ opacity: 1, scale: 1 }"
                     :transition="{ delay: idx * 0.1 }"
-                    class="bg-primary-50 dark:bg-primary-800/30 p-6 rounded-2xl border border-primary-100 dark:border-primary-700 hover:shadow-md transition-shadow group"
+                    class="bg-primary-50 dark:bg-primary-900 p-6 rounded-2xl border border-primary-100 dark:border-primary-700 hover:shadow-md transition-shadow group"
                 >
                     <div
                         class="w-12 h-12 bg-white dark:bg-primary-900 rounded-xl flex items-center justify-center mb-4 text-primary-600 dark:text-primary-400 group-hover:scale-110 transition-transform shadow-sm"

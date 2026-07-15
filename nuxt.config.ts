@@ -4,6 +4,9 @@ import vueJsxPlugin from "@vitejs/plugin-vue-jsx";
 export default defineNuxtConfig({
   compatibilityDate: "2025-07-15",
   devtools: { enabled: true },
+  colorMode: {
+    preference: "light",
+  },
   experimental: {
     emitRouteChunkError: "automatic",
   },
@@ -24,6 +27,10 @@ export default defineNuxtConfig({
       title: "Pondok Pesantren Ashhaburratib",
       titleTemplate: "%s",
       meta: [
+        {
+          name: "color-scheme",
+          content: "only light",
+        },
         {
           name: "description",
           content: "Official Website of Pondok Pesantren Ashhaburratib",
@@ -237,6 +244,19 @@ export default defineNuxtConfig({
       {
         path: "~/features/admin/news/editor",
         prefix: "AdminNewsEditorPage",
+      },
+      // Donation Features
+      {
+        path: "~/features/donation/list",
+        prefix: "DonationPage",
+      },
+      {
+        path: "~/features/donation/detail",
+        prefix: "DonationDetailPage",
+      },
+      {
+        path: "~/features/admin/donation",
+        prefix: "AdminDonationPage",
       },
     ],
   },

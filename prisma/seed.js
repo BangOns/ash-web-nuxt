@@ -29,6 +29,8 @@ async function main() {
   await prisma.visitorMessage.deleteMany();
   await prisma.heroSettings.deleteMany();
   await prisma.profileSettings.deleteMany();
+  await prisma.donationHistory.deleteMany();
+  await prisma.donationCampaign.deleteMany();
 
   // Create Admin
   const adminPassword = hashPassword("admin123");
@@ -249,6 +251,38 @@ async function main() {
         status: "UNREAD",
       },
     ],
+  });
+
+  // Donation campaigns
+  await prisma.donationCampaign.createMany({
+    data: [
+      {
+        title: "Pembangunan Gedung Asrama Santri Baru",
+        slug: "pembangunan-gedung-asrama-santri-baru",
+        banner: "https://images.unsplash.com/photo-1542810634-71277d95dcbb?q=80&w=800",
+        description: "Program pembangunan gedung asrama putra baru berlantai 3 untuk mengakomodasi pertambahan jumlah santri baru Pondok Pesantren Ashhaburratib.",
+        targetAmount: 500000000,
+        collectedAmount: 150000000,
+        whatsappNumber: "08123456789",
+        whatsappTemplate: "Assalamu'alaikum.\n\nSaya ingin berdonasi untuk program:\n\n*Pembangunan Gedung Asrama Santri Baru*\n\nMohon informasi mengenai tata cara penyaluran donasi.\n\nTerima kasih.",
+        startDate: new Date("2026-01-01T00:00:00Z"),
+        endDate: new Date("2026-12-31T23:59:59Z"),
+        status: "PUBLISHED",
+      },
+      {
+        title: "Beasiswa Pendidikan Santri Yatim & Dhuafa",
+        slug: "beasiswa-pendidikan-santri-yatim-dhuafa",
+        banner: "https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?q=80&w=800",
+        description: "Program pemberian beasiswa biaya pendidikan bulanan (SPP) dan kitab penunjang untuk santri yatim, piatu, dan dhuafa berprestasi.",
+        targetAmount: 100000000,
+        collectedAmount: 45000000,
+        whatsappNumber: "08123456789",
+        whatsappTemplate: "Assalamu'alaikum.\n\nSaya ingin berdonasi untuk program:\n\n*Beasiswa Pendidikan Santri Yatim & Dhuafa*\n\nMohon informasi mengenai tata cara penyaluran donasi.\n\nTerima kasih.",
+        startDate: new Date("2026-01-01T00:00:00Z"),
+        endDate: new Date("2026-12-31T23:59:59Z"),
+        status: "PUBLISHED",
+      }
+    ]
   });
 
   console.log("Seeding completed successfully!");

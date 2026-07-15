@@ -1,10 +1,6 @@
 import { ref } from "vue";
 
-/**
- * Reusable hook to handle file uploads.
- * Centralizes loading states, API consumption, and error logging.
- */
-export const useFileUpload = () => {
+export const useAppFileUpload = () => {
   const uploadApi = useUploadApi();
   const uploading = ref(false);
 
@@ -26,6 +22,7 @@ export const useFileUpload = () => {
     const target = e.target as HTMLInputElement;
     if (!target.files?.length) return null;
     const file = target.files[0];
+    if (!file) return null;
     return await uploadFile(file);
   };
 

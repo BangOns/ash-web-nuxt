@@ -22,18 +22,26 @@
     --color-primary-800: #166534;
     --color-primary-900: #14532d;
     --color-primary-950: #052e16;
+
+    /* Theme colors linked to CSS Variables (prefers-color-scheme) */
+    --color-site-bg: var(--background);
+    --color-site-fg: var(--foreground);
+    --color-card-bg: var(--card);
+    --color-card-fg: var(--card-foreground);
+    --color-muted-bg: var(--muted);
+    --color-muted-fg: var(--muted-foreground);
+    --color-site-border: var(--border);
 }
 
 :root {
+    color-scheme: only light;
     --background: #ffffff;
     --foreground: #052e16;
-}
-
-@media (prefers-color-scheme: dark) {
-    :root {
-        --background: #052e16;
-        --foreground: #f0fdf4;
-    }
+    --card: #f8fafc;
+    --card-foreground: #052e16;
+    --muted: #f1f5f9;
+    --muted-foreground: #475569;
+    --border: #e2e8f0;
 }
 
 body {

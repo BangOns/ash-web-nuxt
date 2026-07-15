@@ -77,7 +77,7 @@ const links = [
                     </motion.p>
                 </div>
                 <div
-                    class="absolute -bottom-0.5 left-0 right-0 w-full z-20 pointer-events-none text-teal-50"
+                    class="absolute bottom-0 left-0 right-0 w-full z-20 pointer-events-none text-teal-50"
                 >
                     <svg
                         viewBox="0 0 1440 320"
