@@ -2,15 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <!-- Halaman Utama -->
   <url>
-    <loc>https://ashhaburratib.or.id/</loc>
+    <loc>https://ashhaburratib.com/</loc>
     <lastmod>2026-07-11</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
-  
+
   <!-- Tentang Kami -->
   <url>
-    <loc>https://ashhaburratib.or.id/about</loc>
+    <loc>https://ashhaburratib.com/about</loc>
     <lastmod>2026-07-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
@@ -18,25 +18,25 @@
 
   <!-- Halaman Profil -->
   <url>
-    <loc>https://ashhaburratib.or.id/profile</loc>
+    <loc>https://ashhaburratib.com/profile</loc>
     <lastmod>2026-07-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://ashhaburratib.or.id/profile/vision-mission</loc>
+    <loc>https://ashhaburratib.com/profile/vision-mission</loc>
     <lastmod>2026-07-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://ashhaburratib.or.id/profile/organizational-structure</loc>
+    <loc>https://ashhaburratib.com/profile/organizational-structure</loc>
     <lastmod>2026-07-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://ashhaburratib.or.id/profile/main-tasks</loc>
+    <loc>https://ashhaburratib.com/profile/main-tasks</loc>
     <lastmod>2026-07-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
@@ -44,7 +44,7 @@
 
   <!-- Halaman Berita -->
   <url>
-    <loc>https://ashhaburratib.or.id/news</loc>
+    <loc>https://ashhaburratib.com/news</loc>
     <lastmod>2026-07-11</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
@@ -52,19 +52,19 @@
 
   <!-- Halaman Galeri -->
   <url>
-    <loc>https://ashhaburratib.or.id/gallery</loc>
+    <loc>https://ashhaburratib.com/gallery</loc>
     <lastmod>2026-07-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://ashhaburratib.or.id/gallery/photos</loc>
+    <loc>https://ashhaburratib.com/gallery/photos</loc>
     <lastmod>2026-07-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://ashhaburratib.or.id/gallery/videos</loc>
+    <loc>https://ashhaburratib.com/gallery/videos</loc>
     <lastmod>2026-07-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
@@ -72,31 +72,31 @@
 
   <!-- Halaman Informasi -->
   <url>
-    <loc>https://ashhaburratib.or.id/information</loc>
+    <loc>https://ashhaburratib.com/information</loc>
     <lastmod>2026-07-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://ashhaburratib.or.id/information/agenda</loc>
+    <loc>https://ashhaburratib.com/information/agenda</loc>
     <lastmod>2026-07-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://ashhaburratib.or.id/information/announcements</loc>
+    <loc>https://ashhaburratib.com/information/announcements</loc>
     <lastmod>2026-07-11</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://ashhaburratib.or.id/information/infographics</loc>
+    <loc>https://ashhaburratib.com/information/infographics</loc>
     <lastmod>2026-07-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://ashhaburratib.or.id/information/services</loc>
+    <loc>https://ashhaburratib.com/information/services</loc>
     <lastmod>2026-07-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
@@ -104,31 +104,31 @@
 
   <!-- Halaman Interaksi -->
   <url>
-    <loc>https://ashhaburratib.or.id/interaction</loc>
+    <loc>https://ashhaburratib.com/interaction</loc>
     <lastmod>2026-07-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://ashhaburratib.or.id/interaction/guest-book</loc>
+    <loc>https://ashhaburratib.com/interaction/guest-book</loc>
     <lastmod>2026-07-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://ashhaburratib.or.id/interaction/suggestions-reviews</loc>
+    <loc>https://ashhaburratib.com/interaction/suggestions-reviews</loc>
     <lastmod>2026-07-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://ashhaburratib.or.id/interaction/survey</loc>
+    <loc>https://ashhaburratib.com/interaction/survey</loc>
     <lastmod>2026-07-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://ashhaburratib.or.id/interaction/your-voice</loc>
+    <loc>https://ashhaburratib.com/interaction/your-voice</loc>
     <lastmod>2026-07-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -136,13 +136,13 @@
 
   <!-- Kebijakan Privasi & Ketentuan Layanan -->
   <url>
-    <loc>https://ashhaburratib.or.id/privacy</loc>
+    <loc>https://ashhaburratib.com/privacy</loc>
     <lastmod>2026-07-11</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://ashhaburratib.or.id/terms</loc>
+    <loc>https://ashhaburratib.com/terms</loc>
     <lastmod>2026-07-11</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
